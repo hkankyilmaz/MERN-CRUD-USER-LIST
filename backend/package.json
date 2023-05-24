@@ -2,6 +2,7 @@
   "name": "malwa-rec-case-backend",
   "version": "1.0.0",
   "description": "This server authored for rec case for malwa",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

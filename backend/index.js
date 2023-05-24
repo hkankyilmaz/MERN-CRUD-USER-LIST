@@ -1,1 +1,16 @@
-console.log("Hello World");
+import express from "express";
+import cors from "cors";
+
+const app = express();
+
+// listening the port
+const server = app.listen(8080, () => {
+  console.log("The Server Running  on the 8080 port...");
+});
+
+// regular middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: true, credentials: true }));
+
+// routes
