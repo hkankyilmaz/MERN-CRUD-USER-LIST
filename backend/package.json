@@ -1,0 +1,25 @@
+{
+  "name": "malwa-rec-case-backend",
+  "version": "1.0.0",
+  "description": "This server authored for rec case for malwa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkankyilmaz/malwa-rec-case.git"
+  },
+  "author": "Hakan KARAYILMAZ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hkankyilmaz/malwa-rec-case/issues"
+  },
+  "homepage": "https://github.com/hkankyilmaz/malwa-rec-case#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
