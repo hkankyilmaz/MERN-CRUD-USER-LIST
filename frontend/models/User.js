@@ -10,6 +10,23 @@ const UserSchema = new mongoose.Schema(
       type: String,
       reqired: true,
     },
+    phone: {
+      type: Number,
+    },
+    role: {
+      type: String,
+    },
+    avatar: {
+      type: Number,
+    },
+    status: {
+      active: Boolean,
+    },
+    log: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,
