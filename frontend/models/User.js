@@ -10,6 +10,12 @@ const UserSchema = new mongoose.Schema(
       type: String,
       reqired: true,
     },
+    name: {
+      type: String,
+    },
+    lastname: {
+      type: String,
+    },
     phone: {
       type: Number,
     },
