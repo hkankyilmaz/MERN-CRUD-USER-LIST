@@ -116,7 +116,7 @@ export default function SignIn() {
           >
             Scroling down please...
           </p>
-          <Image src={mouse} width="200" />
+          <Image src={mouse} width="200" alt="mouse" />
         </div>
       </section>
       <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
@@ -135,7 +135,7 @@ export default function SignIn() {
             >
               Scroling down please...
             </p>
-            <Image src={mouse} width="200" />
+            <Image src={mouse} width="200" alt="mouse" />
           </div>
         </section>
         <section className="w-[100vw] h-[100vh] top-0 bottom-0 bg-[#e0e4eb]  absolute panel-3">
@@ -153,7 +153,7 @@ export default function SignIn() {
             >
               Scroling one last time to login to the app...
             </p>
-            <Image src={mouse} width="200" />
+            <Image src={mouse} width="200" alt="mouse" />
           </div>
         </section>
         <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute panel-4">
