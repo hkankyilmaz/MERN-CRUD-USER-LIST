@@ -18,6 +18,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import mouse from "../../../assets/mouse.png";
 
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+
 function Copyright(props) {
   return (
     <Typography
@@ -43,6 +46,18 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const ref = React.useRef();
 
+  const {
+    register,
+    handleSubmit,
+    setError,
+    watch,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
+
   React.useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ ease: "none", duration: 3 });
@@ -65,15 +80,6 @@ export default function SignIn() {
 
     return () => ctx.revert();
   }, []);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
 
   /**
    * Below is some code repeating
@@ -179,11 +185,12 @@ export default function SignIn() {
                 </Typography>
                 <Box
                   component="form"
-                  onSubmit={handleSubmit}
+                  onSubmit={handleSubmit(onSubmit)}
                   noValidate
                   sx={{ mt: 1 }}
                 >
                   <TextField
+                    error={errors.email ? true : false}
                     margin="normal"
                     required
                     fullWidth
@@ -192,8 +199,21 @@ export default function SignIn() {
                     name="email"
                     autoComplete="email"
                     autoFocus
+                    {...register("email", {
+                      required: "This is required field",
+                      pattern: {
+                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                        message: "Please enter valid e-mail",
+                      },
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="email"
+                    render={({ message }) => <p className="">{message}</p>}
                   />
                   <TextField
+                    error={errors.password ? true : false}
                     margin="normal"
                     required
                     fullWidth
@@ -202,6 +222,18 @@ export default function SignIn() {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    {...register("password", {
+                      required: "This is required field",
+                      minLength: {
+                        value: 6,
+                        message: "You Password must have minimum 6 Character",
+                      },
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="password"
+                    render={({ message }) => <p className="">{message}</p>}
                   />
 
                   <Button
