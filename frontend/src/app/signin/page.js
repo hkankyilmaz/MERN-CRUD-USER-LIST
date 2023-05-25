@@ -15,6 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Image from "next/image";
+import mouse from "../../../assets/mouse.png";
+
 function Copyright(props) {
   return (
     <Typography
@@ -108,46 +111,49 @@ export default function SignIn() {
             This App is authored for recruiment case by @hkyilmaz
           </h2>
           <p
-            className="text opacity-90 max-w-sm
+            className="text opacity-90 max-w-sm mb-10
             lg:text-xl lg:max-w-2xl"
           >
-            Going down please...
+            Scroling down please...
           </p>
+          <Image src={mouse} width="200" />
         </div>
       </section>
       <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
         <section className="w-[100vw] h-[100vh] bg-[#f0f2f5] top-0 bottom-0 absolute panel-2">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
             <h2
-              className="font-bold text-2xl max-w-md
+              className="font-bold text-2xl max-w-md text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700
             md:text-3xl text-black
             lg:text-5xl lg:max-w-2xl"
             >
               This App includes Frontend and Backend Web Development.
             </h2>
             <p
-              className="text opacity-90 max-w-sm
+              className="text opacity-90 max-w-sm mb-10
             lg:text-xl lg:max-w-2xl"
             >
-              Going down please...
+              Scroling down please...
             </p>
+            <Image src={mouse} width="200" />
           </div>
         </section>
         <section className="w-[100vw] h-[100vh] top-0 bottom-0 bg-[#e0e4eb]  absolute panel-3">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
             <h2
               className="font-bold text-2xl max-w-md
-            md:text-3xl text-black
+            md:text-3xl text-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700
             lg:text-5xl lg:max-w-2xl"
             >
               Are you Ready to Start ?
             </h2>
             <p
-              className="text opacity-90 max-w-sm
+              className="text opacity-90 max-w-sm mb-10
             lg:text-xl lg:max-w-2xl"
             >
               Scroling one last time to login to the app...
             </p>
+            <Image src={mouse} width="200" />
           </div>
         </section>
         <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute panel-4">
