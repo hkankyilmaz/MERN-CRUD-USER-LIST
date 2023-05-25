@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ErrorIcon from "@mui/icons-material/Error";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -165,7 +166,7 @@ export default function SignIn() {
         <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute panel-4">
           <ThemeProvider theme={defaultTheme}>
             <Container
-              className="h-[100vh] w-[100vw] pt-[75px] z-40"
+              className="h-[100vh] w-[350px] pt-[75px] z-40"
               component="main"
               maxWidth="xs"
             >
@@ -184,13 +185,13 @@ export default function SignIn() {
                   Sign in
                 </Typography>
                 <Box
+                  className="w-[350px]"
                   component="form"
                   onSubmit={handleSubmit(onSubmit)}
                   noValidate
                   sx={{ mt: 1 }}
                 >
                   <TextField
-                    error={errors.email ? true : false}
                     margin="normal"
                     required
                     fullWidth
@@ -210,10 +211,20 @@ export default function SignIn() {
                   <ErrorMessage
                     errors={errors}
                     name="email"
-                    render={({ message }) => <p className="">{message}</p>}
+                    render={({ message }) => (
+                      <p className="text-xs text-red-900 ml-1">
+                        <ErrorIcon
+                          sx={{
+                            marginRight: "3px",
+                            color: "#ff9999",
+                            fontSize: "17px",
+                          }}
+                        />
+                        {message}
+                      </p>
+                    )}
                   />
                   <TextField
-                    error={errors.password ? true : false}
                     margin="normal"
                     required
                     fullWidth
@@ -233,7 +244,18 @@ export default function SignIn() {
                   <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={({ message }) => <p className="">{message}</p>}
+                    render={({ message }) => (
+                      <p className="text-xs text-red-900 ml-1">
+                        <ErrorIcon
+                          sx={{
+                            marginRight: "3px",
+                            color: "#ff9999",
+                            fontSize: "17px",
+                          }}
+                        />
+                        {message}
+                      </p>
+                    )}
                   />
 
                   <Button
@@ -246,9 +268,9 @@ export default function SignIn() {
                   </Button>
                   <Grid container>
                     <Grid item xs>
-                      <Link href="#" variant="body2">
+                      {/* <Link href="#" variant="body2">
                         Forgot password?
-                      </Link>
+                      </Link> */}
                     </Grid>
                     <Grid item>
                       <Link href="#" variant="body2">
