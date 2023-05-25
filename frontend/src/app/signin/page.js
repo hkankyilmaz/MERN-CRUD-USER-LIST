@@ -42,13 +42,13 @@ export default function SignIn() {
 
   React.useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.defaults({ ease: "none", duration: 2 });
+    gsap.defaults({ ease: "none", duration: 3 });
     let ctx = gsap.context(() => {
       let tl_ = gsap.timeline();
 
-      tl_.from(".panel-2", { xPercent: -100 });
+      tl_.from(".panel-2", { xPercent: 0 });
       tl_.from(".panel-3", { xPercent: 100 });
-      tl_.from(".panel-4", { xPercent: -100 });
+      tl_.from(".panel-4", { yPercent: 100 });
 
       ScrollTrigger.create({
         animation: tl_,
@@ -81,7 +81,7 @@ export default function SignIn() {
    */
 
   return (
-    <>
+    <div ref={ref}>
       <section className="w-[100vw] h-[100vh]">
         <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
           <h1
@@ -115,8 +115,8 @@ export default function SignIn() {
           </p>
         </div>
       </section>
-      <section ref={ref} className="relative container__">
-        <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute z-20 panel-2">
+      <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
+        <section className="w-[100vw] h-[100vh] bg-[#f0f2f5] top-0 bottom-0 absolute panel-2">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
             <h2
               className="font-bold text-2xl max-w-md
@@ -133,7 +133,7 @@ export default function SignIn() {
             </p>
           </div>
         </section>
-        <section className="w-[100vw] h-[100vh] top-0 bottom-0  absolute z-20 panel-3">
+        <section className="w-[100vw] h-[100vh] top-0 bottom-0 bg-[#e0e4eb]  absolute panel-3">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
             <h2
               className="font-bold text-2xl max-w-md
@@ -150,7 +150,7 @@ export default function SignIn() {
             </p>
           </div>
         </section>
-        <section className="w-[100vw] h-[100vh] top-0 bottom-0  absolute z-50 panel-4">
+        <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute panel-4">
           <ThemeProvider theme={defaultTheme}>
             <Container
               className="h-[100vh] w-[100vw] pt-[75px] z-40"
@@ -225,6 +225,6 @@ export default function SignIn() {
           </ThemeProvider>
         </section>
       </section>
-    </>
+    </div>
   );
 }

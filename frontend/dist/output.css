@@ -576,10 +576,6 @@ video {
   z-index: 20;
 }
 
-.z-30 {
-  z-index: 30;
-}
-
 .z-40 {
   z-index: 40;
 }
@@ -608,8 +604,16 @@ video {
   height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-\[100vw\] {
   width: 100vw;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .max-w-md {
@@ -632,9 +636,28 @@ video {
   gap: 1.5rem;
 }
 
-.bg-slate-700 {
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.bg-\[\#c1cdd7\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+  background-color: rgb(193 205 215 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#a2b4c3\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(162 180 195 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#e0e4eb\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 228 235 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0f2f5\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 242 245 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -735,11 +758,6 @@ video {
     line-height: 2.25rem;
   }
 
-  .md\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
   .md\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -761,18 +779,13 @@ video {
     line-height: 1;
   }
 
-  .lg\:text-8xl {
-    font-size: 6rem;
+  .lg\:text-6xl {
+    font-size: 3.75rem;
     line-height: 1;
   }
 
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .lg\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
   }
 }
