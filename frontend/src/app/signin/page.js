@@ -49,7 +49,6 @@ export default function SignIn() {
     let ctx = gsap.context(() => {
       let tl_ = gsap.timeline();
 
-      tl_.from(".panel-2", { xPercent: 0 });
       tl_.from(".panel-3", { xPercent: 100 });
       tl_.from(".panel-4", { yPercent: 100 });
 
@@ -57,6 +56,7 @@ export default function SignIn() {
         animation: tl_,
         trigger: ".container__",
         start: "top top",
+        end: "=+2000",
         scrub: true,
         pin: true,
         anticipatePin: 1,
