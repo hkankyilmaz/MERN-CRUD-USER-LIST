@@ -4,4 +4,32 @@ section {
 }
 html {
   overflow-x: hidden;
+  font-size: 14px;
+}
+
+/* Data Grid Styles */
+
+.MuiDataGrid-footerContainer,
+.MuiDataGrid-toolbarContainer {
+  background-color: #f0f2f5;
+}
+
+.MuiDataGrid-main
+  div:nth-last-of-type(1):not(
+    .MuiDataGrid-columnHeaders *,
+    .MuiDataGrid-virtualScroller *,
+    .MuiDataGrid-main div:nth-last-of-type(3) *,
+    .MuiDataGrid-main div:nth-last-of-type(4) *
+  ) {
+  display: none;
+}
+[aria-label="Search"] {
+  position: absolute !important;
+  right: 20px !important;
+}
+.MuiDataGrid-toolbarContainer {
+  position: relative !important;
+}
+.MuiDataGrid-columnHeaderTitle {
+  color: darkred !important;
 }
