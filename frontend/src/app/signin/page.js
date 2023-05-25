@@ -84,8 +84,8 @@ export default function SignIn() {
    */
 
   return (
-    <div ref={ref}>
-      <section className="w-[100vw] h-[100vh]">
+    <main ref={ref}>
+      <section className="w-[100vw] h-[100vh] z-50">
         <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
           <h1
             className="inline-block
@@ -231,6 +231,6 @@ export default function SignIn() {
           </ThemeProvider>
         </section>
       </section>
-    </div>
+    </main>
   );
 }
