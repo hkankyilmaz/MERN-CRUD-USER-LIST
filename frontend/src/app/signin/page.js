@@ -57,6 +57,7 @@ export default function SignIn() {
     formState: { errors },
   } = useForm();
   console.log(errors);
+
   const onSubmit = async (data) => {
     const { email, password } = data;
     let options = { redirect: false, email, password };
