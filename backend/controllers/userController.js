@@ -2,7 +2,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const createUser = async () => {
+const createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
     res.status(201).json({ user: user });
@@ -21,7 +21,7 @@ export const createUser = async () => {
   }
 };
 
-export const LoginUser = async () => {
+const LoginUser = async () => {
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({

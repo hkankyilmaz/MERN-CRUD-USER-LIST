@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 import { useAppSelector, useAppDispatch } from ".././store/hook";
-import { useRegisterUserMutation } from "../store/features/api";
+import { useRegisterUserMutation } from "../store/features/userApiSlice";
 
 function Copyright(props) {
   return (
@@ -54,6 +54,18 @@ export default function SignUp() {
   console.log(errors);
   const onSubmit = async (data) => {
     console.log(data);
+    getUser({
+      name: `${data.firstname} ${data.lastname}`,
+      email: data.email,
+      password: data.password,
+    })
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

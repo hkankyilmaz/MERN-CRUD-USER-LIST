@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import dbConnect from "./util/dbConnect";
+import dbConnect from "./util/dbConnect.js";
 import userRoute from "./routes/userRoute.js";
 
 const app = express();

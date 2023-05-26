@@ -5,7 +5,7 @@ import "../../dist/output.css";
 
 import { SessionProvider } from "next-auth/react";
 
-import { Providers } from "./store/provider";
+import { Providers } from "./store/Provider";
 
 export default function RootLayout({ children }) {
   return (
