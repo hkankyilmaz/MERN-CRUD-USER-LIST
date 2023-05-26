@@ -16,6 +16,9 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
+import { useAppSelector, useAppDispatch } from ".././store/hook";
+import { useRegisterUserMutation } from "../store/features/api";
+
 function Copyright(props) {
   return (
     <Typography
@@ -39,6 +42,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const [getUser, { isLoading, data }] = useRegisterUserMutation();
+
   const {
     register,
     handleSubmit,
@@ -100,7 +105,7 @@ export default function SignUp() {
                 />
                 <ErrorMessage
                   errors={errors}
-                  name="email"
+                  name="firstname"
                   render={({ message }) => (
                     <p className="text-xs text-red-900 ml-1">
                       <ErrorIcon
@@ -134,7 +139,7 @@ export default function SignUp() {
                 />
                 <ErrorMessage
                   errors={errors}
-                  name="email"
+                  name="lastname"
                   render={({ message }) => (
                     <p className="text-xs text-red-900 ml-1">
                       <ErrorIcon
@@ -203,7 +208,7 @@ export default function SignUp() {
                 />
                 <ErrorMessage
                   errors={errors}
-                  name="email"
+                  name="password"
                   render={({ message }) => (
                     <p className="text-xs text-red-900 ml-1">
                       <ErrorIcon
