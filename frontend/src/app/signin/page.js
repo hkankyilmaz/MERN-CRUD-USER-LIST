@@ -22,6 +22,8 @@ import mouse from "../../../assets/mouse.png";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
+import { useSession, signIn, getSession } from "next-auth/react";
+
 function Copyright(props) {
   return (
     <Typography
@@ -56,6 +58,17 @@ export default function SignIn() {
   } = useForm();
   console.log(errors);
   const onSubmit = async (data) => {
+    const { email, password } = data;
+    let options = { redirect: false, email, password };
+
+    try {
+      const res = await signIn("credentials", options);
+      console.log(res);
+    } catch (err) {
+      setIsLoading(false);
+      console.log(err);
+    }
+
     console.log(data);
   };
 

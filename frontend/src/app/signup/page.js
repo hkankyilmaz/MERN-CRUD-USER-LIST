@@ -25,7 +25,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="#">
         @hkyilmaz
       </Link>{" "}
       {new Date().getFullYear()}
@@ -90,7 +90,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  {...register("lastname", {
+                  {...register("firstname", {
                     required: "This is required field",
                     minLength: {
                       value: 3,
