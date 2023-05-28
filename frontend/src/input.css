@@ -5,3 +5,29 @@
 .btn {
   @apply rounded-full h-8 w-8 ml-3;
 }
+
+.panel-one-title {
+  @apply inline-block font-black text-5xl md:text-4xl lg:text-6xl;
+}
+.panel-one-title-span {
+  @apply inline-block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700 sm:underline decoration-8 underline-offset-[1rem] decoration-gray-200 dark:decoration-gray-800 mb-2;
+}
+
+.panel-one-subtitle {
+  @apply font-bold text-2xl max-w-md md:text-3xl text-black lg:text-5xl lg:max-w-2xl;
+}
+
+.description {
+  @apply opacity-90 max-w-sm mb-10 lg:text-xl lg:max-w-2xl;
+}
+
+.panel-two-title,
+.panel-three-title {
+  @apply font-bold text-2xl max-w-md md:text-3xl text-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700 lg:text-5xl lg:max-w-2xl;
+}
+
+.panel-2,
+.panel-3,
+.panel-4 {
+  @apply w-[100vw] h-[100vh] top-0 bottom-0 absolute;
+}

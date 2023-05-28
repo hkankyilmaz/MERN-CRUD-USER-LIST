@@ -108,76 +108,38 @@ export default function SignIn() {
     <main ref={ref}>
       <section className="w-[100vw] h-[100vh] z-50">
         <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
-          <h1
-            className="inline-block
-            font-black text-5xl
-            md:text-4xl
-            lg:text-6xl"
-          >
-            <span
-              className="
-            inline-block text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700
-            sm:underline decoration-8 underline-offset-[1rem] decoration-gray-200 dark:decoration-gray-800
-            mb-2 
-            "
-            >
+          <h1 className="panel-one-title">
+            <span className="panel-one-title-span  ">
               Malwation Recruiment Case
             </span>
           </h1>
-          <h2
-            className="font-bold text-2xl max-w-md
-            md:text-3xl text-black
-            lg:text-5xl lg:max-w-2xl"
-          >
+          <h2 className="panel-one-subtitle">
             This App is authored for recruiment case by @hkyilmaz
           </h2>
-          <p
-            className="text opacity-90 max-w-sm mb-10
-            lg:text-xl lg:max-w-2xl"
-          >
-            Scroling down please...
-          </p>
+          <p className="description">Scroling down please...</p>
           <Image src={mouse} width="200" alt="mouse" />
         </div>
       </section>
       <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
-        <section className="w-[100vw] h-[100vh] bg-[#f0f2f5] top-0 bottom-0 absolute panel-2">
+        <section className="bg-[#f0f2f5] panel-2">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
-            <h2
-              className="font-bold text-2xl max-w-md text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700
-            md:text-3xl text-black
-            lg:text-5xl lg:max-w-2xl"
-            >
+            <h2 className="panel-two-title">
               This App includes Frontend and Backend Web Development.
             </h2>
-            <p
-              className="text opacity-90 max-w-sm mb-10
-            lg:text-xl lg:max-w-2xl"
-            >
-              Scroling down please...
-            </p>
+            <p className="description">Scroling down please...</p>
             <Image src={mouse} width="200" alt="mouse" />
           </div>
         </section>
-        <section className="w-[100vw] h-[100vh] top-0 bottom-0 bg-[#e0e4eb]  absolute panel-3">
+        <section className="bg-[#e0e4eb] panel-3">
           <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
-            <h2
-              className="font-bold text-2xl max-w-md
-            md:text-3xl text-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-cyan-700
-            lg:text-5xl lg:max-w-2xl"
-            >
-              Are you Ready to Start ?
-            </h2>
-            <p
-              className="text opacity-90 max-w-sm mb-10
-            lg:text-xl lg:max-w-2xl"
-            >
+            <h2 className="panel-three-title">Are you Ready to Start ?</h2>
+            <p className="description">
               Scroling one last time to login to the app...
             </p>
             <Image src={mouse} width="200" alt="mouse" />
           </div>
         </section>
-        <section className="w-[100vw] h-[100vh] top-0 bottom-0 absolute panel-4">
+        <section className="panel-4">
           <ThemeProvider theme={defaultTheme}>
             <Container
               className="h-[100vh] w-[350px] pt-[75px] z-40"
