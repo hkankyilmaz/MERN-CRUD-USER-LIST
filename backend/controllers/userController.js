@@ -97,7 +97,32 @@ const createToken = (userId) => {
     expiresIn: "1d",
   });
 };
-const updateUser = async (req, res) => {};
+const updateUser = async (req, res) => {
+  try {
+    const docId = req.body.id;
+    const values = req.body.values;
+    User.findByIdAndUpdate(docId, { $set: { ...values } }, function (err, doc) {
+      if (err) {
+        res.status(500).json({
+          succeded: false,
+          err,
+        });
+      } else {
+        res.status(200).json({
+          succeded: true,
+          upDoc: doc,
+          message: "Succesfully Updated",
+        });
+      }
+      console.log("Belge güncellendi:", doc);
+    });
+  } catch (error) {
+    res.status(500).json({
+      succeded: false,
+      err,
+    });
+  }
+};
 const deleteUser = async (req, res) => {};
 
 export { createUser, loginUser, updateUser, getAllUsers, deleteUser };
