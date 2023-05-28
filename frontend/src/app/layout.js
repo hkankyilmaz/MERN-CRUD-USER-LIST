@@ -7,6 +7,8 @@ import { SessionProvider } from "next-auth/react";
 
 import { Providers } from "./store/Provider";
 
+import { ToastContainer } from "react-toastify";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -19,6 +21,11 @@ export default function RootLayout({ children }) {
         <body>
           {" "}
           <SessionProvider>{children}</SessionProvider>
+          <ToastContainer
+            hideProgressBar={true}
+            autoClose={3000}
+            position="top-center"
+          />
         </body>
       </Providers>
     </html>

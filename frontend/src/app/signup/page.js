@@ -42,7 +42,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [getUser, { isLoading, data }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
   const {
     register,
@@ -51,10 +51,12 @@ export default function SignUp() {
     watch,
     formState: { errors },
   } = useForm();
+
   console.log(errors);
+
   const onSubmit = async (data) => {
     console.log(data);
-    getUser({
+    registerUser({
       name: `${data.firstname} ${data.lastname}`,
       email: data.email,
       password: data.password,

@@ -31,3 +31,7 @@
 .panel-4 {
   @apply w-[100vw] h-[100vh] top-0 bottom-0 absolute;
 }
+
+.logo {
+  @apply font-bold text-2xl max-w-md text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-cyan-700 md:text-2xl lg:text-3xl lg:max-w-2xl;
+}

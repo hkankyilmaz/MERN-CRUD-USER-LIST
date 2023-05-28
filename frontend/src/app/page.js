@@ -28,11 +28,11 @@ import TaskIcon from "@mui/icons-material/Task";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ClearIcon from "@mui/icons-material/Clear";
-import UnpublishedIcon from "@mui/icons-material/Unpublished";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
+
+import { useSession, signOut, getSession } from "next-auth/react";
 
 import {
   DataGridPremium,
@@ -52,6 +52,9 @@ export default function Home(props) {
   const [rows, setrows] = useState([]);
   const [selection, setselection] = useState([]);
 
+  const { data: session } = useSession();
+  console.log(session);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -65,7 +68,7 @@ export default function Home(props) {
       <GridToolbarFilterButton />
       <GridToolbarExport
         csvOptions={{
-          fileName: "SpartaLogExport_",
+          fileName: "MalwaLogExport_",
         }}
       />
       <GridToolbarDensitySelector />
@@ -116,13 +119,7 @@ export default function Home(props) {
 
   const drawer = (
     <div>
-      <Toolbar
-        className="font-bold text-2xl max-w-md text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-cyan-700
-            md:text-2xl
-            lg:text-3xl lg:max-w-2xl"
-      >
-        MALWATİON
-      </Toolbar>
+      <Toolbar className="logo">MALWATİON</Toolbar>
       <Divider />
       <List>
         {["Users", "Tasks", "Mail", "Others"].map((text, index) => (
@@ -198,7 +195,6 @@ export default function Home(props) {
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
           aria-label="mailbox folders"
         >
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Drawer
             container={container}
             variant="temporary"
@@ -242,16 +238,16 @@ export default function Home(props) {
         >
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-end">
-            <button className="btn bg-green-500/50 hover:bg-green-500">
+            <button className="btn bg-green-500/75 hover:bg-green-500">
               <CheckIcon className="text-white" />
             </button>
-            <button className="btn bg-orange-400/50 hover:bg-orange-400">
+            <button className="btn bg-orange-400/75 hover:bg-orange-400">
               <ClearIcon className="text-white" />
             </button>
-            <button className="btn bg-blue-600/50 hover:bg-blue-600">
+            <button className="btn bg-blue-600/75 hover:bg-blue-600">
               <EditIcon className="text-white" />
             </button>
-            <button className="btn bg-red-700/50 hover:bg-red-700">
+            <button className="btn bg-red-700/75 hover:bg-red-700">
               <DeleteForeverIcon className="text-white" />
             </button>
           </div>
