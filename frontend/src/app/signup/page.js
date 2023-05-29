@@ -16,9 +16,13 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
+import { useRouter } from "next/navigation";
+
 import { useAppSelector, useAppDispatch } from ".././store/hook";
 import { useRegisterUserMutation } from "../store/features/userApiSlice";
 import validator from "validator";
+
+import { toast } from "react-toastify";
 
 function Copyright(props) {
   return (
@@ -43,6 +47,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const router = useRouter();
   const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
   const options = {
@@ -75,12 +80,24 @@ export default function SignUp() {
       name: `${data.firstname} ${data.lastname}`,
       email: data.email,
       password: data.password,
+      firstname: data.firstname,
+      lastname: data.lastname,
     })
       .unwrap()
       .then((res) => {
         console.log(res);
+        toast.success("Successfuly Registered");
+        router.push("/signin");
       })
       .catch((err) => {
+        if (err.data.messageDetail) {
+          if (err.data.messageDetail?.email)
+            setError("email", {
+              type: "custom",
+              message: err.data.messageDetail?.email,
+            });
+        }
+        toast.error("Opps, There is a Error...");
         console.log(err);
       });
   };

@@ -13,6 +13,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ErrorIcon from "@mui/icons-material/Error";
 
+import { useRouter } from "next/navigation";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -23,6 +25,8 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 import { useSession, signIn, getSession } from "next-auth/react";
+
+import { toast } from "react-toastify";
 
 function Copyright(props) {
   return (
@@ -47,6 +51,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const router = useRouter();
   const ref = React.useRef();
 
   const {
@@ -64,10 +69,22 @@ export default function SignIn() {
 
     try {
       const res = await signIn("credentials", options);
-      console.log(res);
+      if (res.error == "Incorrect password!") {
+        setError("password", { type: "cutom", message: "Incorrect password!" });
+        toast.error("Opps, There is a Error...");
+      } else if (res.error == "You haven't registered yet!") {
+        setError("email", {
+          type: "custom",
+          message: "You haven't registered yet!",
+        });
+        toast.error("Opps, There is a Error...");
+      } else {
+        toast.success("Succesfully Login...");
+        router.push("/");
+      }
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
+      toast.error("Opps, There is a Error...");
     }
 
     console.log(data);

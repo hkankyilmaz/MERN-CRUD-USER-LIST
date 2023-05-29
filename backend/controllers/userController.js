@@ -26,6 +26,7 @@ const createUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     // create hash
     newUser.password = await bcrypt.hash(newUser.password, salt);
+
     await newUser.save();
     res.status(200).json({
       succeded: true,
@@ -36,7 +37,10 @@ const createUser = async (req, res) => {
     if (error.code === 11000) {
       res.status(400).json({
         succeded: false,
-        message: "The Email is already registered",
+        messageDetail: {
+          email: "The Email is already registered",
+        },
+        message: "Oh no, There is a Problem...",
         error,
       });
     } else {
