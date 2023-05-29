@@ -18,6 +18,7 @@ import { ErrorMessage } from "@hookform/error-message";
 
 import { useAppSelector, useAppDispatch } from ".././store/hook";
 import { useRegisterUserMutation } from "../store/features/userApiSlice";
+import validator from "validator";
 
 function Copyright(props) {
   return (
@@ -44,6 +45,20 @@ const defaultTheme = createTheme();
 export default function SignUp() {
   const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
+  const options = {
+    //pasword check options --- for strong password
+    minLength: 8,
+    minLowercase: 1,
+    minUppercase: 1,
+    minNumbers: 0,
+    minSymbols: 1,
+    pointsPerUnique: 0,
+    pointsPerRepeat: 0,
+    pointsForContainingLower: 0,
+    pointsForContainingUpper: 0,
+    pointsForContainingNumber: 0,
+    pointsForContainingSymbol: 0,
+  };
   const {
     register,
     handleSubmit,
@@ -214,9 +229,12 @@ export default function SignUp() {
                   autoComplete="new-password"
                   {...register("password", {
                     required: "This is required field",
-                    minLength: {
-                      value: 6,
-                      message: "You Password must have minimum 6 Character",
+                    validate: {
+                      isStrongPassword: (value) =>
+                        validator.isStrongPassword(value, {
+                          ...options,
+                        }) ||
+                        "Plase enter Strong Password ( You must use minimum 8 character, 1 uppercase character, 1 lowercase character, 1 Special character )",
                     },
                   })}
                 />
