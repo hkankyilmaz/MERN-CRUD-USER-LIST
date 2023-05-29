@@ -10,6 +10,12 @@ const UserSchema = new mongoose.Schema(
       type: String,
       reqired: true,
     },
+    firstname: {
+      type: String,
+    },
+    lastname: {
+      type: String,
+    },
     name: {
       type: String,
     },
@@ -22,7 +28,7 @@ const UserSchema = new mongoose.Schema(
     role: {
       type: String,
     },
-    avatar: {
+    gender: {
       type: Number,
     },
     status: {

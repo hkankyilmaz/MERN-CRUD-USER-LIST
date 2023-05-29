@@ -362,13 +362,16 @@ export default function Home(props) {
       </Box>
       <Dialog open={open} onClose={handleClose}>
         {whichForm == "Active" ? (
-          <Forms.ActiveDialog handleClose={handleClose} />
+          <Forms.ActiveDialog id={selection[0]} handleClose={handleClose} />
         ) : whichForm == "DeActive" ? (
-          <Forms.DeActiveDialog handleClose={handleClose} />
+          <Forms.DeActiveDialog id={selection[0]} handleClose={handleClose} />
         ) : whichForm == "Update" ? (
-          <Forms.updateDialog handleClose={handleClose} />
+          <Forms.updateDialog
+            row={data.users.filter((item) => item._id == selection[0])}
+            handleClose={handleClose}
+          />
         ) : whichForm == "Delete" ? (
-          <Forms.deleteDialog handleClose={handleClose} />
+          <Forms.deleteDialog id={selection[0]} handleClose={handleClose} />
         ) : (
           <p>Opss, There is a Problem !!!!</p>
         )}

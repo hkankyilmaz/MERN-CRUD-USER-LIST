@@ -23,8 +23,8 @@ const UserSchema = new mongoose.Schema(
     role: {
       type: String,
     },
-    avatar: {
-      type: Number,
+    gender: {
+      type: String,
     },
     status: {
       active: Boolean,

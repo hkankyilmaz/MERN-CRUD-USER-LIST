@@ -7,7 +7,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Link from "@mui/material/Link";
@@ -21,6 +25,23 @@ import ErrorIcon from "@mui/icons-material/Error";
 
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+
+import validator from "validator";
+
+const options = {
+  //pasword check options --- for strong password
+  minLength: 8,
+  minLowercase: 1,
+  minUppercase: 1,
+  minNumbers: 0,
+  minSymbols: 1,
+  pointsPerUnique: 0,
+  pointsPerRepeat: 0,
+  pointsForContainingLower: 0,
+  pointsForContainingUpper: 0,
+  pointsForContainingNumber: 0,
+  pointsForContainingSymbol: 0,
+};
 
 export function deleteDialog(props) {
   return (
@@ -78,6 +99,8 @@ const defaultTheme = createTheme();
 export function updateDialog(props) {
   //const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
+  const editForm = React.useRef();
+  console.log(props);
   const {
     register,
     handleSubmit,
@@ -90,18 +113,6 @@ export function updateDialog(props) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    registerUser({
-      name: `${data.firstname} ${data.lastname}`,
-      email: data.email,
-      password: data.password,
-    })
-      .unwrap()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
@@ -122,6 +133,7 @@ export function updateDialog(props) {
               }}
             >
               <Box
+                ref={editForm}
                 className="w-[350px]"
                 component="form"
                 noValidate
@@ -134,7 +146,9 @@ export function updateDialog(props) {
                       className="mb-2"
                       autoComplete="given-name"
                       name="firstName"
-                      required
+                      defaultValue={
+                        props.row[0].firtsname ? props.row[0].firstname : ""
+                      }
                       fullWidth
                       id="firstName"
                       label="First Name"
@@ -167,7 +181,9 @@ export function updateDialog(props) {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       className="mb-2"
-                      required
+                      defaultValue={
+                        props.row[0].lastname ? props.row[0].lastname : ""
+                      }
                       fullWidth
                       id="lastName"
                       label="Last Name"
@@ -201,7 +217,9 @@ export function updateDialog(props) {
                   <Grid item xs={12}>
                     <TextField
                       className="mb-2"
-                      required
+                      defaultValue={
+                        props.row[0].email ? props.row[0].email : ""
+                      }
                       fullWidth
                       id="email"
                       label="Email Address"
@@ -236,7 +254,9 @@ export function updateDialog(props) {
                   <Grid item xs={12}>
                     <TextField
                       className="mb-2"
-                      required
+                      defaultValue={
+                        props.row[0].password ? props.row[0].password : ""
+                      }
                       fullWidth
                       name="password"
                       label="Password"
@@ -245,9 +265,12 @@ export function updateDialog(props) {
                       autoComplete="new-password"
                       {...register("password", {
                         required: "This is required field",
-                        minLength: {
-                          value: 6,
-                          message: "You Password must have minimum 6 Character",
+                        validate: {
+                          isStrongPassword: (value) =>
+                            validator.isStrongPassword(value, {
+                              ...options,
+                            }) ||
+                            "Plase enter Strong Password ( You must use minimum 8 character, 1 uppercase character, 1 lowercase character, 1 Special character )",
                         },
                       })}
                     />
@@ -271,24 +294,26 @@ export function updateDialog(props) {
                   <Grid item xs={12}>
                     <TextField
                       className="mb-2"
-                      required
+                      defaultValue={
+                        props.row[0].phone ? props.row[0].phone : ""
+                      }
                       fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      {...register("password", {
+                      name="phone"
+                      label="Phone"
+                      type="tel"
+                      id="phone"
+                      {...register("phone", {
                         required: "This is required field",
-                        minLength: {
-                          value: 6,
-                          message: "You Password must have minimum 6 Character",
+                        validate: {
+                          isMobilePhone: (value) =>
+                            validator.isMobilePhone(value, "tr-TR") ||
+                            "Plase enter Valid Phone Number ( example: 05515539872 )",
                         },
                       })}
                     />
                     <ErrorMessage
                       errors={errors}
-                      name="password"
+                      name="phone"
                       render={({ message }) => (
                         <p className="text-xs text-red-900 ml-1">
                           <ErrorIcon
@@ -304,26 +329,31 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      className="mb-2"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      {...register("password", {
-                        required: "This is required field",
-                        minLength: {
-                          value: 6,
-                          message: "You Password must have minimum 6 Character",
-                        },
-                      })}
-                    />
+                    <FormControl className="mb-2" sx={{ width: "100%" }}>
+                      <InputLabel id="demo-simple-select-helper-label">
+                        Gender
+                      </InputLabel>
+                      <Select
+                        defaultValue={
+                          props.row[0].gender ? props.row[0].gender : ""
+                        }
+                        labelId="demo-simple-select-helper-label"
+                        id="gender"
+                        label="Gender"
+                        {...register("gender", {
+                          required: "This is required field",
+                        })}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
+                      </Select>
+                    </FormControl>
                     <ErrorMessage
                       errors={errors}
-                      name="password"
+                      name="gender"
                       render={({ message }) => (
                         <p className="text-xs text-red-900 ml-1">
                           <ErrorIcon
@@ -339,26 +369,30 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      className="mb-2"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      {...register("password", {
-                        required: "This is required field",
-                        minLength: {
-                          value: 6,
-                          message: "You Password must have minimum 6 Character",
-                        },
-                      })}
-                    />
+                    <FormControl className="mb-2" sx={{ width: "100%" }}>
+                      <InputLabel id="demo-simple-select-helper-label">
+                        Role
+                      </InputLabel>
+                      <Select
+                        labelId="Role"
+                        defaultValue={props.row[0].role ? props.row.role : ""}
+                        id="role"
+                        label="role"
+                        {...register("role", {
+                          required: "This is required field",
+                        })}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="User">User</MenuItem>
+                        <MenuItem value="Admin">Admin</MenuItem>
+                        <MenuItem value="Super Admin">Super Admin</MenuItem>
+                      </Select>
+                    </FormControl>
                     <ErrorMessage
                       errors={errors}
-                      name="password"
+                      name="role"
                       render={({ message }) => (
                         <p className="text-xs text-red-900 ml-1">
                           <ErrorIcon
@@ -374,26 +408,29 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      className="mb-2"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      {...register("password", {
-                        required: "This is required field",
-                        minLength: {
-                          value: 6,
-                          message: "You Password must have minimum 6 Character",
-                        },
-                      })}
-                    />
+                    <FormControl className="mb-2 w-full" sx={{ width: "100%" }}>
+                      <InputLabel id="status">Statu</InputLabel>
+                      <Select
+                        defaultValue={
+                          props.row[0].status ? props.row[0].status : ""
+                        }
+                        labelId="Status"
+                        id="status"
+                        label="Status"
+                        {...register("status", {
+                          required: "This is required field",
+                        })}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="Active">Active</MenuItem>
+                        <MenuItem value="DeActive">DeActive</MenuItem>
+                      </Select>
+                    </FormControl>
                     <ErrorMessage
                       errors={errors}
-                      name="password"
+                      name="status"
                       render={({ message }) => (
                         <p className="text-xs text-red-900 ml-1">
                           <ErrorIcon
@@ -409,15 +446,15 @@ export function updateDialog(props) {
                     />
                   </Grid>
                 </Grid>
+                <DialogActions>
+                  <Button onClick={props.handleClose}>Cancel</Button>
+                  <Button type="submit">Update</Button>
+                </DialogActions>
               </Box>
             </Box>
           </Container>
         </ThemeProvider>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={props.handleClose}>Cancel</Button>
-        <Button onClick={props.handleClose}>Update</Button>
-      </DialogActions>
     </>
   );
 }
