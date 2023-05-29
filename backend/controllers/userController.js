@@ -102,29 +102,31 @@ const createToken = (userId) => {
   });
 };
 const updateUser = async (req, res) => {
+  console.log("calisti");
   try {
-    const docId = req.body.id;
-    const values = req.body.values;
-    User.findByIdAndUpdate(docId, { $set: { ...values } }, function (err, doc) {
-      if (err) {
-        res.status(500).json({
-          succeded: false,
-          err,
-        });
-      } else {
+    const docId = req.body._id;
+    const values = req.body;
+    delete values._id;
+    console.log(values, docId);
+
+    User.findByIdAndUpdate(docId, { $set: { ...values } })
+      .then((result) => {
         res.status(200).json({
           succeded: true,
-          upDoc: doc,
           message: "Succesfully Updated",
         });
-      }
-      console.log("Belge güncellendi:", doc);
-    });
+        console.log(result);
+      })
+      .catch((error) => {
+        res.status(500).json({
+          succeded: false,
+          message: "Oh no, There is a Problem...",
+          error,
+        });
+        console.log(error);
+      });
   } catch (error) {
-    res.status(500).json({
-      succeded: false,
-      err,
-    });
+    console.log(error);
   }
 };
 const deleteUser = async (req, res) => {};

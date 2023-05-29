@@ -117,19 +117,19 @@ export default function Home(props) {
       {
         field: "name",
         headerName: "Name",
-        width: 125,
+        width: 200,
         editable: false,
       },
       {
         field: "email",
         headerName: "Email",
-        width: 250,
+        width: 200,
         editable: false,
       },
       {
         field: "phone",
         headerName: "Phone",
-        width: 225,
+        width: 150,
         editable: false,
       },
       {
@@ -139,7 +139,7 @@ export default function Home(props) {
         editable: false,
       },
       {
-        field: "active",
+        field: "status",
         headerName: "Active",
         width: 125,
         editable: false,

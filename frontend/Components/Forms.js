@@ -25,8 +25,11 @@ import ErrorIcon from "@mui/icons-material/Error";
 
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "react-toastify";
 
 import validator from "validator";
+
+import { useUserUpdateMutation } from "../src/app/store/features/userApiSlice";
 
 const options = {
   //pasword check options --- for strong password
@@ -97,10 +100,10 @@ export function ActiveDialog(props) {
 const defaultTheme = createTheme();
 
 export function updateDialog(props) {
-  //const [registerUser, { isLoading, data }] = useRegisterUserMutation();
+  const [updateUser, { isLoading, data }] = useUserUpdateMutation();
 
   const editForm = React.useRef();
-  console.log(props);
+
   const {
     register,
     handleSubmit,
@@ -109,10 +112,32 @@ export function updateDialog(props) {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
-
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log({
+      ...data,
+      name: `${data.firstname} ${data.lastname}`,
+      _id: props.row[0]._id,
+    });
+    updateUser({
+      ...data,
+      name: `${data.firstname} ${data.lastname}`,
+      _id: props.row[0]._id,
+    })
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+        toast.success("Successfuly Updated");
+      })
+      .catch((err) => {
+        if (err.data.error.code == 11000) {
+          setError("email", {
+            type: "custom",
+            message: "This email have already registered..!",
+          });
+        }
+        toast.error(err.data.message);
+        console.log(err);
+      });
   };
 
   return (
@@ -236,47 +261,6 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="email"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      className="mb-2"
-                      defaultValue={
-                        props.row[0].password ? props.row[0].password : ""
-                      }
-                      fullWidth
-                      helperText="This password is hashed If you wanna change you can delete password and Update"
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      {...register("password", {
-                        required: "This is required field",
-                        validate: {
-                          isStrongPassword: (value) =>
-                            validator.isStrongPassword(value, {
-                              ...options,
-                            }) ||
-                            "Plase enter Strong Password ( You must use minimum 8 character, 1 uppercase character, 1 lowercase character, 1 Special character )",
-                        },
-                      })}
-                    />
-                    <ErrorMessage
-                      errors={errors}
-                      name="password"
                       render={({ message }) => (
                         <p className="text-xs text-red-900 ml-1">
                           <ErrorIcon
