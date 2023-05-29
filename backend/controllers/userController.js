@@ -4,10 +4,10 @@ import jwt from "jsonwebtoken";
 
 const getAllUsers = async (req, res) => {
   try {
-    const posts = await User.find({});
+    const users = await User.find({});
     res.status(200).json({
       succeded: true,
-      posts,
+      users,
       message: "Users Info Succesfully Received",
     });
   } catch (error) {

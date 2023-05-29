@@ -33,3 +33,6 @@ html {
 .MuiDataGrid-columnHeaderTitle {
   color: darkred !important;
 }
+.MuiDrawer-paper {
+  overflow: hidden;
+}
