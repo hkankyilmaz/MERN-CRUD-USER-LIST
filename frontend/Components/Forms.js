@@ -147,12 +147,11 @@ export function updateDialog(props) {
                       autoComplete="given-name"
                       name="firstName"
                       defaultValue={
-                        props.row[0].firtsname ? props.row[0].firstname : ""
+                        props.row[0].firstname ? props.row[0].firstname : ""
                       }
                       fullWidth
                       id="firstName"
                       label="First Name"
-                      autoFocus
                       {...register("firstname", {
                         required: "This is required field",
                         minLength: {
@@ -258,6 +257,7 @@ export function updateDialog(props) {
                         props.row[0].password ? props.row[0].password : ""
                       }
                       fullWidth
+                      helperText="This password is hashed If you wanna change you can delete password and Update"
                       name="password"
                       label="Password"
                       type="password"

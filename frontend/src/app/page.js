@@ -301,6 +301,7 @@ export default function Home(props) {
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-end">
             <button
+              disabled={selection.length !== 1 ? true : false}
               onClick={() => {
                 setWhichForm("Active");
                 setOpen(true);
@@ -310,6 +311,7 @@ export default function Home(props) {
               <CheckIcon className="text-white" />
             </button>
             <button
+              disabled={selection.length !== 1 ? true : false}
               onClick={() => {
                 setWhichForm("DeActive");
                 setOpen(true);
@@ -319,6 +321,7 @@ export default function Home(props) {
               <ClearIcon className="text-white" />
             </button>
             <button
+              disabled={selection.length !== 1 ? true : false}
               onClick={() => {
                 setWhichForm("Update");
                 setOpen(true);
@@ -328,6 +331,7 @@ export default function Home(props) {
               <EditIcon className="text-white" />
             </button>
             <button
+              disabled={selection.length !== 1 ? true : false}
               onClick={() => {
                 setWhichForm("Delete");
                 setOpen(true);

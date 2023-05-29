@@ -36,3 +36,9 @@ html {
 .MuiDrawer-paper {
   overflow: hidden;
 }
+
+/* Dialog styles */
+
+.MuiDialogTitle-root {
+  color: #1976d2;
+}
