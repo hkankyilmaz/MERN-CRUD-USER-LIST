@@ -1,7 +1,3 @@
-# malwa-rec-case
-
-rec-case
-
 <h2 align="center">🏆 MALWATİON HİRİNG CASE🏆</h2>
 <hr>
 <br>
@@ -27,73 +23,34 @@ rec-case
 <hr>
 <br>
 
-<h2 align="center">📚 Frontend 📚</h2>
+<h2> Frontend 🔥 </h2>
 <br>
 
-<ul>
-    <li>
-        <a href="https://redux-toolkit.js.org/" target="blank" title="rtk" >📀 redux-toolkit --> Client Side State Management </a>
-    </li>
-     <li>
-        <a href="https://redux-toolkit.js.org/" target="blank" title="rtkq" >📀 redux-toolkit-query --> Server Side State Management </a>
-    </li>
-      <li>
-        <a href=https://next-auth.js.org/" target="blank" title="next-auth" >📀 next-auth --> Authentication </a>
-    </li>
-     <li>
-        <a href="https://react-hook-form.com/" target="blank" title="react-hook-form" >📀 react-hook-form --> Management Form Action and Validations</a>
-    </li>
-     <li>
-        <a href="https://www.npmjs.com/package/validator" target="blank" title="validator" >📀 validator --> Form Validations  </</a>
-    </li>
-     <li>
-        <a href="https://day.js.org/" target="blank" title="dayjs" >📀 dayjs --> Handling Time and Date</a>
-    </li>
-     <li>
-        <a href="https://tailwindcss.com/" target="blank" title="tailwindcss" >📀 tailwindcss --> Handling Styling</a>
-    </li>
-     <li>
-        <a href="https://mui.com/" target="blank" title="mui" >📀 meterial-ui --> User Interface</a>
-    </li>
-     <li>
-        <a href="https://greensock.com/gsap/" target="blank" title="gsap" >📀 gsap --> Awesome Animation</a>
-    </li>
-     <li>
-        <a href="https://fkhadra.github.io/react-toastify/introduction" target="" title="toastify" >📀 react-toastif --> Feedback </a>
-    </li>
-<ul/>
+✔️ [redux-toolkit](https://redux-toolkit.js.org/) --> Client Side State Management <br>
+✔️ [redux-toolkit-query](https://redux-toolkit.js.org/) --> Server Side State Management <br>
+✔️ [next-auth](https://next-auth.js.org/) --> Authentication <br>
+✔️ [react-hook-form](https://react-hook-form.com/) --> Management Form Action and Validations <br>
+✔️ [validator](https://www.npmjs.com/package/validator) --> Form Validations <br>
+✔️ [dayjs](https://day.js.org/) dayjs --> Handling Time and Date <br>
+✔️ [tailwindcss](https://tailwindcss.com/) --> Handling Styling<br>
+✔️ [meterial-ui](https://mui.com/) --> User Interface <br>
+✔️ [gsap](https://greensock.com/gsap/) --> Awesome Animation <br>
+✔️ [react-toastif](https://fkhadra.github.io/react-toastify/introduction) --> Feedback <br>
 
-<h2 align="center">📚 Backend 📚</h2>
 <br>
-<ul>
-    <li>
-        <a href="https://expressjs.com/" target="blank" title="express" >📀 express --> Node.js Framework </a>
-    </li>
-     <li>
-        <a href="https://mongoosejs.com/" target="blank" title="mongoose" >📀 mongoose --> MangoDB Object Modeling </a>
-    </li>
-     <li>
-        <a href="https://www.npmjs.com/package/nodemon" target="nodemon" title="nodemon" >📀 nodemon --> Automaticaly Restarting</a>
-    </li>
-     <li>
-        <a href="https://www.npmjs.com/package/bcryptjs" target="blank" title="bcryptjs" >📀 bcryptjs --> Encryption, crtpt </</a>
-    </li>
-     <li>
-        <a href="https://www.npmjs.com/package/cors" target="blank" title="cors" >📀 cors --> CORS</a>
-    </li>
-     <li>
-        <a href="https://jwt.io/" target="blank" title="JWT" >📀 jsonwebtoken --> Web Token </a>
-    </li>
-     <li>
-        <a href="https://mui.com/" target="blank" title="mui" >📀 meterial-ui --> User Interface</a>
-    </li>
-     <li>
-        <a href="https://www.mongodb.com/atlas/database" target="blank" title="mango" >📀 mangoDB --> Database [No libary :)]</a>
-    </li>
-     <li>
-        <a href="https://fkhadra.github.io/react-toastify/introduction" target="" title="toastify" >📀 react-toastif --> Feedback </a>
-    </li>
-<ul/>
+
+<h2> Backend 🚀 </h2>
+<br>
+
+✔️ [express](https://expressjs.com/) --> Node.js Framework <br>
+✔️ [mongoose](https://mongoosejs.com/) --> MangoDB Object Modeling <br>
+✔️ [nodemon](https://www.npmjs.com/package/nodemon) --> Automaticaly Restarting <br>
+✔️ [bcryptjs](https://www.npmjs.com/package/bcryptjs) --> Encryption, crtpt <br>
+✔️ [cors](https://www.npmjs.com/package/cors) --> CORS <br>
+✔️ [meterial-ui](https://mui.com/) --> User Interface <br>
+✔️ [jsonwebtoken](https://jwt.io/) --> Web Token <br>
+✔️ [mangoDB](https://www.mongodb.com/atlas/database) --> Database [No libary :)]<br>
+
 <br>
 <br>
 <h2 align="center">🔎 PROJECT OVERVIEW 🔎</h2>
