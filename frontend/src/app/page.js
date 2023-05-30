@@ -88,10 +88,6 @@ export default function Home(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };

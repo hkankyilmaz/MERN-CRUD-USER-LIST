@@ -113,11 +113,6 @@ export function updateDialog(props) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log({
-      ...data,
-      name: `${data.firstname} ${data.lastname}`,
-      _id: props.row[0]._id,
-    });
     updateUser({
       ...data,
       name: `${data.firstname} ${data.lastname}`,
