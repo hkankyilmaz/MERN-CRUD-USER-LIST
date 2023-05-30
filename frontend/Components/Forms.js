@@ -29,9 +29,23 @@ import { toast } from "react-toastify";
 
 import validator from "validator";
 
-import { useUserUpdateMutation } from "../src/app/store/features/userApiSlice";
+import {
+  useUserUpdateMutation,
+  useDeleteUserMutation,
+} from "../src/app/store/features/userApiSlice";
 
 export function deleteDialog(props) {
+  const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
+  console.log({ id: props.id });
+
+  const handleDelete = () =>
+    deleteUser({ id: props.id })
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+
   return (
     <>
       <DialogTitle>Delete Process</DialogTitle>
@@ -41,8 +55,12 @@ export function deleteDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
-        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>
+          Cancel
+        </Button>
+        <Button className="_btn" onClick={handleDelete}>
+          Yes I'am Sure
+        </Button>
       </DialogActions>
     </>
   );
@@ -58,8 +76,12 @@ export function DeActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
-        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>
+          Cancel
+        </Button>
+        <Button className="_btn" onClick={props.handleClose}>
+          Yes I'am Sure
+        </Button>
       </DialogActions>
     </>
   );
@@ -75,8 +97,12 @@ export function ActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
-        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>
+          Cancel
+        </Button>
+        <Button className="_btn" onClick={props.handleClose}>
+          Yes I'am Sure
+        </Button>
       </DialogActions>
     </>
   );
@@ -85,7 +111,7 @@ export function ActiveDialog(props) {
 const defaultTheme = createTheme();
 
 export function updateDialog(props) {
-  const [updateUser, { isLoading,isFetching,data }] = useUserUpdateMutation();
+  const [updateUser, { isLoading, isFetching, data }] = useUserUpdateMutation();
 
   const editForm = React.useRef();
 
@@ -107,8 +133,8 @@ export function updateDialog(props) {
       .then((res) => {
         console.log(res);
         toast.success("Successfuly Updated");
-        props.handleClose()
-        props.refetch()
+        props.handleClose();
+        props.refetch();
       })
       .catch((err) => {
         if (err.data.error.code == 11000) {
@@ -413,8 +439,12 @@ export function updateDialog(props) {
                   </Grid>
                 </Grid>
                 <DialogActions>
-                  <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
-                  <Button className="_btn" type="submit">Update</Button>
+                  <Button className="_btn" onClick={props.handleClose}>
+                    Cancel
+                  </Button>
+                  <Button className="_btn" type="submit">
+                    Update
+                  </Button>
                 </DialogActions>
               </Box>
             </Box>

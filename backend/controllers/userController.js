@@ -129,6 +129,13 @@ const updateUser = async (req, res) => {
     console.log(error);
   }
 };
-const deleteUser = async (req, res) => {};
+const deleteUser = async (req, res) => {
+  console.log("deneme");
+  try {
+    const id = req.body.id;
+    console.log(id);
+    res.send("basarili");
+  } catch (error) {}
+};
 
 export { createUser, loginUser, updateUser, getAllUsers, deleteUser };
