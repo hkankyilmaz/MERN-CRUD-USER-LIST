@@ -22,7 +22,6 @@ import { useAppSelector, useAppDispatch } from ".././store/hook";
 import { useRegisterUserMutation } from "../store/features/userApiSlice";
 
 import validator from "validator";
-import { options } from "../../../constant";
 
 import { toast } from "react-toastify";
 
@@ -44,6 +43,21 @@ function Copyright(props) {
   );
 }
 
+const options = {
+  //pasword check options --- for strong password
+  minLength: 8,
+  minLowercase: 1,
+  minUppercase: 1,
+  minNumbers: 0,
+  minSymbols: 1,
+  pointsPerUnique: 0,
+  pointsPerRepeat: 0,
+  pointsForContainingLower: 0,
+  pointsForContainingUpper: 0,
+  pointsForContainingNumber: 0,
+  pointsForContainingSymbol: 0,
+};
+
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
@@ -52,16 +66,8 @@ export default function SignUp() {
   const router = useRouter();
   const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
-  const {
-    register,
-    handleSubmit,
-    setError,
-    watch,
-    formState: { errors },
-  } = useForm();
-
-  console.log(errors);
-
+  const { register, handleSubmit, setError, watch, formState: { errors } } = useForm();
+ 
   const onSubmit = async (data) => {
     console.log(data);
     registerUser({

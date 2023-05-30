@@ -35,6 +35,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 import LogoutIcon from "@mui/icons-material/Logout";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 
@@ -61,7 +64,7 @@ import {
 } from "@mui/x-data-grid-premium";
 
 const actions = [
-  { icon: <LogoutIcon />, name: "Log Out" },
+  { icon: <LogoutIcon onClick= {()=> signOut()} />, name: "Log Out" },
   { icon: <UpgradeIcon />, name: "Upgrade Info" },
 ];
 
@@ -116,6 +119,7 @@ export default function Home(props) {
           <Image
             width={50}
             height={50}
+            alt="User"
             src={
               params.row.gender == "Male"
                 ? man
@@ -155,6 +159,9 @@ export default function Home(props) {
         headerName: "Status",
         width: 125,
         editable: false,
+        renderCell: (params) => (
+        <div className={`w-[20px] h-[20px] ml-1 p-0 m-0 inline-block ${params.row.status == "Active" ? "bg-green-600" :"bg-red-700" } rounded-[50%]`}></div> 
+        ),
       },
     ],
   });
@@ -353,20 +360,24 @@ export default function Home(props) {
       </Box>
       <Dialog open={open} onClose={handleClose}>
         {whichForm == "Active" ? (
-          <Forms.ActiveDialog id={selection[0]} handleClose={handleClose} />
+          <Forms.ActiveDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
         ) : whichForm == "DeActive" ? (
-          <Forms.DeActiveDialog id={selection[0]} handleClose={handleClose} />
+          <Forms.DeActiveDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
         ) : whichForm == "Update" ? (
           <Forms.updateDialog
+            refetch={refetch}
             row={data.users.filter((item) => item._id == selection[0])}
             handleClose={handleClose}
           />
         ) : whichForm == "Delete" ? (
-          <Forms.deleteDialog id={selection[0]} handleClose={handleClose} />
+          <Forms.deleteDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
         ) : (
           <p>Opss, There is a Problem !!!!</p>
         )}
       </Dialog>
+      <Backdrop open={isFetching | isLoading} >
+        <CircularProgress sx={{color:"white"}} />
+      </Backdrop>
     </main>
   );
 }

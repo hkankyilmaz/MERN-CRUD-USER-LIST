@@ -12,4 +12,11 @@ export function middleware(req) {
       return NextResponse.next();
     }
   }
+
+    if ("/" == req.nextUrl.pathname) {
+    if (!hasToken) {
+      return NextResponse.redirect(new URL("/signin", req.url));
+    } 
+  }
+  
 }
