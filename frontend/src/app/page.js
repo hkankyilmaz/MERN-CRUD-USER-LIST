@@ -33,7 +33,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
 import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -76,10 +75,8 @@ export default function Home(props) {
   const [whichForm, setWhichForm] = React.useState();
 
   const { isFetching, isLoading, refetch, data } = useGetUsersQuery();
-  console.log(data);
 
   const { data: session } = useSession();
-  console.log(session);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -109,7 +106,7 @@ export default function Home(props) {
   const [cols] = useState({
     columns: [
       {
-        field: "idx",
+        field: "id__",
         headerName: "S.N.",
         width: 50,
         editable: false,
@@ -369,7 +366,14 @@ export default function Home(props) {
             )}
             getDetailPanelHeight={({ row }) => 300} // Optional, default is 500px
             {...cols}
-            {...{ rows: data ? [...data.users] : [] }}
+            {...{
+              rows: data
+                ? [...data.users].map((item, index) => ({
+                    id__: index + 1,
+                    ...item,
+                  }))
+                : [],
+            }}
             getRowId={(row) => row._id}
             checkboxSelection
             components={{

@@ -20,7 +20,9 @@ import { useRouter } from "next/navigation";
 
 import { useAppSelector, useAppDispatch } from ".././store/hook";
 import { useRegisterUserMutation } from "../store/features/userApiSlice";
+
 import validator from "validator";
+import options from "../../../constant/constant";
 
 import { toast } from "react-toastify";
 
@@ -50,20 +52,6 @@ export default function SignUp() {
   const router = useRouter();
   const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
-  const options = {
-    //pasword check options --- for strong password
-    minLength: 8,
-    minLowercase: 1,
-    minUppercase: 1,
-    minNumbers: 0,
-    minSymbols: 1,
-    pointsPerUnique: 0,
-    pointsPerRepeat: 0,
-    pointsForContainingLower: 0,
-    pointsForContainingUpper: 0,
-    pointsForContainingNumber: 0,
-    pointsForContainingSymbol: 0,
-  };
   const {
     register,
     handleSubmit,
