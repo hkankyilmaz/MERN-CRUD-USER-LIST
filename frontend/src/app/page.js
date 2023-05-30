@@ -45,6 +45,10 @@ import { useSession, signOut, getSession } from "next-auth/react";
 
 import Dialog from "@mui/material/Dialog";
 
+import man from "../../assets/man3.png";
+import women from "../../assets/women3.png";
+import unknown from "../../assets/unknown.png";
+
 import * as Forms from "../../Components/Forms";
 
 import {
@@ -115,6 +119,25 @@ export default function Home(props) {
         editable: false,
       },
       {
+        field: "imageAvatar",
+        headerName: "Avatar",
+        width: 100,
+        editable: false,
+        renderCell: (params) => (
+          <Image
+            width={50}
+            height={50}
+            src={
+              params.row.gender == "Male"
+                ? man
+                : params.row.gender == "Female"
+                ? women
+                : unknown
+            }
+          />
+        ),
+      },
+      {
         field: "name",
         headerName: "Name",
         width: 200,
@@ -140,7 +163,7 @@ export default function Home(props) {
       },
       {
         field: "status",
-        headerName: "Active",
+        headerName: "Status",
         width: 125,
         editable: false,
       },
@@ -195,7 +218,7 @@ export default function Home(props) {
           className="translate-x-[-50%]"
           ariaLabel="SpeedDial basic example"
           sx={{ position: "absolute", bottom: 16, left: "50%" }}
-          icon={<PersonIcon />}
+          icon={<PersonIcon sx={{ fontSize: "30px" }} />}
         >
           {actions.map((action) => (
             <SpeedDialAction
