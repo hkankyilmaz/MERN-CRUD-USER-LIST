@@ -311,15 +311,22 @@ export default function Home(props) {
         >
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-end">
+            { 
+             /**
+             * if remove the comment at the button that below
+             * User can update one line in the user list
+             * but you must not remove comment line at the update button..!
+             */
+             }
             <button
-              disabled={selection.length !== 1 ? true : false}
+              //disabled={selection.length !== 1 ? true : false}
               onClick={() => { setWhichForm("Active"); setOpen(true); }}           
               className="btn bg-green-500/75 hover:bg-green-500"
             >
               <CheckIcon className="text-white" />
             </button>
             <button
-              disabled={selection.length !== 1 ? true : false}
+             //disabled={selection.length !== 1 ? true : false}
               onClick={() => {  setWhichForm("DeActive"); setOpen(true);}}
               className="btn bg-orange-400/75 hover:bg-orange-400"
             >
@@ -333,29 +340,32 @@ export default function Home(props) {
               <EditIcon className="text-white" />
             </button>
             <button
-              disabled={selection.length !== 1 ? true : false}
+              //disabled={selection.length !== 1 ? true : false}
               onClick={() => { setWhichForm("Delete");setOpen(true);}}
               className="btn bg-red-700/75 hover:bg-red-700"
             >
               <DeleteForeverIcon className="text-white" />
             </button>
           </div>
-          <DataGridPremium
-            className="h-full"
-            getDetailPanelContent={({ row }) => (
-              <div className="master-container">
-                <p className="font-bold">hello master info</p>
-              </div>
-            )}
-            getDetailPanelHeight={({ row }) => 300} 
-            {...cols}
-            {...{ rows: data ? [...data.users].map((item, index) => ({ id__: index + 1,...item,  })) : []}}
-            getRowId={(row) => row._id}
-            checkboxSelection
-            components={{Toolbar: CustomToolbar,}}            
-            onRowSelectionModelChange={newSelection => setselection(newSelection) }
-            selectionModel={selection}
-          />
+          {!isLoading ?
+            <DataGridPremium
+               className="h-full"
+               getDetailPanelContent={({ row }) => (
+                 <div className="master-container">
+                   <p className="font-bold">hello master info</p>
+                 </div>
+               )}
+               getDetailPanelHeight={({ row }) => 300} 
+               {...cols}
+               {...{ rows: data ? [...data.users].map((item, index) => ({ id__: index + 1,...item,  })) : []}}
+               getRowId={(row) => row._id}
+               checkboxSelection
+               components={{Toolbar: CustomToolbar,}}            
+               onRowSelectionModelChange={newSelection => setselection(newSelection) }
+               selectionModel={selection}
+             />
+           : ""
+          }
         </Box>
       </Box>
       <Dialog open={open} onClose={handleClose}>

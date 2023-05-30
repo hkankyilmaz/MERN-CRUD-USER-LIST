@@ -44,7 +44,7 @@ function Icon() {
       Loading...
       <FontAwesomeIcon
         spin
-        style={{ color: "black", marginLeft: ".5rem" }}
+        style={{ color: "white", marginLeft: ".5rem" }}
         icon={faRotate}
         size="lg"
       />
@@ -79,7 +79,7 @@ export function deleteDialog(props) {
           Cancel
         </Button>
         <Button
-          disabled={!isLoading | !isFetching}
+          disabled={isLoading | isFetching}
           className="_btn"
           onClick={handleDelete}
         >
@@ -114,7 +114,7 @@ export function DeActiveDialog(props) {
       </DialogContent>
       <DialogActions>
         <Button
-          disabled={!isLoading | !isFetching}
+          disabled={isLoading | isFetching}
           className="_btn"
           onClick={props.handleClose}
         >
@@ -152,7 +152,7 @@ export function ActiveDialog(props) {
       </DialogContent>
       <DialogActions>
         <Button
-          disabled={!isLoading | !isFetching}
+          disabled={isLoading | isFetching}
           className="_btn"
           onClick={props.handleClose}
         >
@@ -496,7 +496,7 @@ export function updateDialog(props) {
                 </Grid>
                 <DialogActions>
                   <Button
-                    disabled={!isLoading | !isFetching}
+                    disabled={isLoading | isFetching}
                     className="_btn"
                     onClick={props.handleClose}
                   >
