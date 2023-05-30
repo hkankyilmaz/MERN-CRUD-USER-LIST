@@ -22,7 +22,7 @@ import { useAppSelector, useAppDispatch } from ".././store/hook";
 import { useRegisterUserMutation } from "../store/features/userApiSlice";
 
 import validator from "validator";
-import options from "../../../constant/constant";
+import { options } from "../../../constant";
 
 import { toast } from "react-toastify";
 

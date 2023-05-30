@@ -86,18 +86,14 @@ export default function Home(props) {
   };
 
   const handleClose = () => {
-    setOpen(false);
+      setOpen(false);
   };
 
   const CustomToolbar = () => (
     <GridToolbarContainer>
       <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
-      <GridToolbarExport
-        csvOptions={{
-          fileName: "MalwaLogExport_",
-        }}
-      />
+      <GridToolbarExport csvOptions={{   fileName: "MalwaLogExport_",  }}/>
       <GridToolbarDensitySelector />
       <GridToolbarQuickFilter />
     </GridToolbarContainer>
@@ -238,11 +234,7 @@ export default function Home(props) {
         <CssBaseline />
         <AppBar
           position="fixed"
-          sx={{
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-            ml: { sm: `${drawerWidth}px` },
-          }}
-        >
+          sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }}} >
           <Toolbar className="bg-[#f0f2f5] relative">
             <IconButton
               color="inherit"
@@ -308,50 +300,34 @@ export default function Home(props) {
         <Box
           className="h-full"
           component="main"
-          sx={{
-            flexGrow: 1,
-            p: 3,
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-          }}
+          sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }}}
         >
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-end">
             <button
               disabled={selection.length !== 1 ? true : false}
-              onClick={() => {
-                setWhichForm("Active");
-                setOpen(true);
-              }}
+              onClick={() => { setWhichForm("Active"); setOpen(true); }}           
               className="btn bg-green-500/75 hover:bg-green-500"
             >
               <CheckIcon className="text-white" />
             </button>
             <button
               disabled={selection.length !== 1 ? true : false}
-              onClick={() => {
-                setWhichForm("DeActive");
-                setOpen(true);
-              }}
+              onClick={() => {  setWhichForm("DeActive"); setOpen(true);}}
               className="btn bg-orange-400/75 hover:bg-orange-400"
             >
               <ClearIcon className="text-white" />
             </button>
             <button
               disabled={selection.length !== 1 ? true : false}
-              onClick={() => {
-                setWhichForm("Update");
-                setOpen(true);
-              }}
+              onClick={() => {  setWhichForm("Update"); setOpen(true); }}
               className="btn bg-blue-600/75 hover:bg-blue-600"
             >
               <EditIcon className="text-white" />
             </button>
             <button
               disabled={selection.length !== 1 ? true : false}
-              onClick={() => {
-                setWhichForm("Delete");
-                setOpen(true);
-              }}
+              onClick={() => { setWhichForm("Delete");setOpen(true);}}
               className="btn bg-red-700/75 hover:bg-red-700"
             >
               <DeleteForeverIcon className="text-white" />
@@ -364,25 +340,13 @@ export default function Home(props) {
                 <p className="font-bold">hello master info</p>
               </div>
             )}
-            getDetailPanelHeight={({ row }) => 300} // Optional, default is 500px
+            getDetailPanelHeight={({ row }) => 300} 
             {...cols}
-            {...{
-              rows: data
-                ? [...data.users].map((item, index) => ({
-                    id__: index + 1,
-                    ...item,
-                  }))
-                : [],
-            }}
+            {...{ rows: data ? [...data.users].map((item, index) => ({ id__: index + 1,...item,  })) : []}}
             getRowId={(row) => row._id}
             checkboxSelection
-            components={{
-              Toolbar: CustomToolbar,
-            }}
-            onRowSelectionModelChange={(newSelection) => {
-              console.log(newSelection);
-              setselection(newSelection);
-            }}
+            components={{Toolbar: CustomToolbar,}}            
+            onRowSelectionModelChange={newSelection => setselection(newSelection) }
             selectionModel={selection}
           />
         </Box>
