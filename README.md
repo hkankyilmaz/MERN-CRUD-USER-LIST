@@ -31,7 +31,7 @@
 ✔️ [next-auth](https://next-auth.js.org/) --> Authentication <br>
 ✔️ [react-hook-form](https://react-hook-form.com/) --> Management Form Action and Validations <br>
 ✔️ [validator](https://www.npmjs.com/package/validator) --> Form Validations <br>
-✔️ [dayjs](https://day.js.org/) dayjs --> Handling Time and Date <br>
+✔️ [dayjs](https://day.js.org/) --> Handling Time and Date <br>
 ✔️ [tailwindcss](https://tailwindcss.com/) --> Handling Styling<br>
 ✔️ [meterial-ui](https://mui.com/) --> User Interface <br>
 ✔️ [gsap](https://greensock.com/gsap/) --> Awesome Animation <br>
