@@ -41,8 +41,8 @@ export function deleteDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.handleClose}>Cancel</Button>
-        <Button onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
+        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
       </DialogActions>
     </>
   );
@@ -58,8 +58,8 @@ export function DeActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.handleClose}>Cancel</Button>
-        <Button onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
+        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
       </DialogActions>
     </>
   );
@@ -75,8 +75,8 @@ export function ActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.handleClose}>Cancel</Button>
-        <Button onClick={props.handleClose}>Yes I'am Sure</Button>
+        <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
+        <Button className="_btn" onClick={props.handleClose}>Yes I'am Sure</Button>
       </DialogActions>
     </>
   );
@@ -85,7 +85,7 @@ export function ActiveDialog(props) {
 const defaultTheme = createTheme();
 
 export function updateDialog(props) {
-  const [updateUser, { isLoading, data }] = useUserUpdateMutation();
+  const [updateUser, { isLoading,isFetching,data }] = useUserUpdateMutation();
 
   const editForm = React.useRef();
 
@@ -107,6 +107,8 @@ export function updateDialog(props) {
       .then((res) => {
         console.log(res);
         toast.success("Successfuly Updated");
+        props.handleClose()
+        props.refetch()
       })
       .catch((err) => {
         if (err.data.error.code == 11000) {
@@ -411,8 +413,8 @@ export function updateDialog(props) {
                   </Grid>
                 </Grid>
                 <DialogActions>
-                  <Button onClick={props.handleClose}>Cancel</Button>
-                  <Button type="submit">Update</Button>
+                  <Button className="_btn" onClick={props.handleClose}>Cancel</Button>
+                  <Button className="_btn" type="submit">Update</Button>
                 </DialogActions>
               </Box>
             </Box>

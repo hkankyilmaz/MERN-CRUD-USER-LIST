@@ -42,3 +42,6 @@ html {
 .MuiDialogTitle-root {
   color: #1976d2;
 }
+[data-testid="MenuIcon"] {
+  color: #1976d2 !important;
+}
