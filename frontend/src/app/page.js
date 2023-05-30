@@ -370,7 +370,7 @@ export default function Home(props) {
             handleClose={handleClose}
           />
         ) : whichForm == "Delete" ? (
-          <Forms.deleteDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
+          <Forms.deleteDialog id={selection} handleClose={handleClose} refetch={refetch} />
         ) : (
           <p>Opss, There is a Problem !!!!</p>
         )}

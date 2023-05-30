@@ -26,7 +26,7 @@ export const userApiSlice = createApi({
     deleteUser: builder.mutation({
       query: (user) => ({
         url: "/delete",
-        method: "DELETE",
+        method: "POST",
         body: user,
       }),
     }),

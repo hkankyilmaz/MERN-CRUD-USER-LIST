@@ -68,7 +68,6 @@ const loginUser = async (req, res) => {
 
     if (user) {
       same = await bcrypt.compare(password, user.password);
-      console.log("same", same);
     } else {
       return res.status(401).json({
         succeded: false,
@@ -102,20 +101,18 @@ const createToken = (userId) => {
   });
 };
 const updateUser = async (req, res) => {
-  console.log("calisti");
   try {
     const docId = req.body._id;
     const values = req.body;
     delete values._id;
-    console.log(values, docId);
 
     User.findByIdAndUpdate(docId, { $set: { ...values } })
       .then((result) => {
         res.status(200).json({
           succeded: true,
           message: "Succesfully Updated",
+          result,
         });
-        console.log(result);
       })
       .catch((error) => {
         res.status(500).json({
@@ -123,19 +120,33 @@ const updateUser = async (req, res) => {
           message: "Oh no, There is a Problem...",
           error,
         });
-        console.log(error);
       });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      succeded: false,
+      message: "Oh no, There is a Problem...",
+      error,
+    });
   }
 };
 const deleteUser = async (req, res) => {
-  console.log("deneme");
   try {
     const id = req.body.id;
-    console.log(id);
-    res.send("basarili");
-  } catch (error) {}
+
+    User.deleteMany({ _id: { $in: id } }).then((res) => {
+      res.status(200).json({
+        succeded: true,
+        message: "Succesfully Deleted",
+        res,
+      });
+    });
+  } catch (error) {
+    res.status(500).json({
+      succeded: false,
+      message: "Oh no, There is a Problem...",
+      error,
+    });
+  }
 };
 
 export { createUser, loginUser, updateUser, getAllUsers, deleteUser };

@@ -38,14 +38,15 @@ export function deleteDialog(props) {
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
   console.log({ id: props.id });
 
-  const handleDelete = () =>
+  const handleDelete = () => {
+    console.log("deneme");
     deleteUser({ id: props.id })
       .unwrap()
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
-
+  };
   return (
     <>
       <DialogTitle>Delete Process</DialogTitle>
