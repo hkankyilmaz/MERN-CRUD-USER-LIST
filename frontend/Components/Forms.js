@@ -27,25 +27,44 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
+
 import validator from "validator";
 
 import {
   useUserUpdateMutation,
   useDeleteUserMutation,
+  useUsersUpdateMutation,
 } from "../src/app/store/features/userApiSlice";
+
+function Icon() {
+  return (
+    <span>
+      Loading...
+      <FontAwesomeIcon
+        spin
+        style={{ color: "black", marginLeft: ".5rem" }}
+        icon={faRotate}
+        size="lg"
+      />
+    </span>
+  );
+}
 
 export function deleteDialog(props) {
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
   console.log({ id: props.id });
 
   const handleDelete = () => {
-    console.log("deneme");
     deleteUser({ id: props.id })
       .unwrap()
       .then((res) => {
-        console.log(res);
+        toast.success("Successfuly Updated");
+        props.handleClose();
+        props.refetch();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("Opps, There is a Problem..."));
   };
   return (
     <>
@@ -59,8 +78,12 @@ export function deleteDialog(props) {
         <Button className="_btn" onClick={props.handleClose}>
           Cancel
         </Button>
-        <Button className="_btn" onClick={handleDelete}>
-          Yes I'am Sure
+        <Button
+          disabled={!isLoading | !isFetching}
+          className="_btn"
+          onClick={handleDelete}
+        >
+          {isLoading | isFetching ? <Icon /> : "Yes I'am Sure"}
         </Button>
       </DialogActions>
     </>
@@ -68,6 +91,19 @@ export function deleteDialog(props) {
 }
 
 export function DeActiveDialog(props) {
+  const [usersUpdate, { isLoading, isFetching, data }] =
+    useUsersUpdateMutation();
+
+  const handleUpdates = () => {
+    usersUpdate({ status: "DeActive", id: props.id })
+      .unwrap()
+      .then((res) => {
+        toast.success("Successfuly Updated");
+        props.handleClose();
+        props.refetch();
+      })
+      .catch((err) => toast.error("Opps, There is a Problem..."));
+  };
   return (
     <>
       <DialogTitle>DeActive Process</DialogTitle>
@@ -77,11 +113,15 @@ export function DeActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="_btn" onClick={props.handleClose}>
+        <Button
+          disabled={!isLoading | !isFetching}
+          className="_btn"
+          onClick={props.handleClose}
+        >
           Cancel
         </Button>
-        <Button className="_btn" onClick={props.handleClose}>
-          Yes I'am Sure
+        <Button className="_btn" onClick={handleUpdates}>
+          {isLoading | isFetching ? <Icon /> : "Yes I'am Sure"}
         </Button>
       </DialogActions>
     </>
@@ -89,6 +129,19 @@ export function DeActiveDialog(props) {
 }
 
 export function ActiveDialog(props) {
+  const [usersUpdate, { isLoading, isFetching, data }] =
+    useUsersUpdateMutation();
+
+  const handleUpdates = () => {
+    usersUpdate({ status: "Active", id: props.id })
+      .unwrap()
+      .then((res) => {
+        toast.success("Successfuly Updated");
+        props.handleClose();
+        props.refetch();
+      })
+      .catch((err) => toast.error("Opps, There is a Problem..."));
+  };
   return (
     <>
       <DialogTitle>Active Process</DialogTitle>
@@ -98,11 +151,15 @@ export function ActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button className="_btn" onClick={props.handleClose}>
+        <Button
+          disabled={!isLoading | !isFetching}
+          className="_btn"
+          onClick={props.handleClose}
+        >
           Cancel
         </Button>
-        <Button className="_btn" onClick={props.handleClose}>
-          Yes I'am Sure
+        <Button className="_btn" onClick={handleUpdates}>
+          {isLoading | isFetching ? <Icon /> : "Yes I'am Sure"}
         </Button>
       </DialogActions>
     </>
@@ -132,7 +189,6 @@ export function updateDialog(props) {
     })
       .unwrap()
       .then((res) => {
-        console.log(res);
         toast.success("Successfuly Updated");
         props.handleClose();
         props.refetch();
@@ -145,7 +201,6 @@ export function updateDialog(props) {
           });
         }
         toast.error(err.data.message);
-        console.log(err);
       });
   };
 
@@ -440,11 +495,15 @@ export function updateDialog(props) {
                   </Grid>
                 </Grid>
                 <DialogActions>
-                  <Button className="_btn" onClick={props.handleClose}>
+                  <Button
+                    disabled={!isLoading | !isFetching}
+                    className="_btn"
+                    onClick={props.handleClose}
+                  >
                     Cancel
                   </Button>
                   <Button className="_btn" type="submit">
-                    Update
+                    {isLoading | isFetching ? <Icon /> : "Update"}
                   </Button>
                 </DialogActions>
               </Box>

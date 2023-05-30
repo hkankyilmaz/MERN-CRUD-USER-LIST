@@ -23,6 +23,13 @@ export const userApiSlice = createApi({
         body: user,
       }),
     }),
+    usersUpdate: builder.mutation({
+      query: (user) => ({
+        url: "/updates",
+        method: "POST",
+        body: user,
+      }),
+    }),
     deleteUser: builder.mutation({
       query: (user) => ({
         url: "/delete",
@@ -45,5 +52,6 @@ export const {
   useGetUsersQuery,
   useGetUserMutation,
   useUserUpdateMutation,
+  useUsersUpdateMutation,
   useRegisterUserMutation,
 } = userApiSlice;

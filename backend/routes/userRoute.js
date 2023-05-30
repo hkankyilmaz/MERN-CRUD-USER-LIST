@@ -8,6 +8,7 @@ router.route("/register").post(userController.createUser);
 router.route("/login").post(userController.loginUser);
 router.route("/users").get(userController.getAllUsers);
 router.route("/update").post(userController.updateUser);
+router.route("/updates").post(userController.updateUsers);
 router.route("/delete").post(userController.deleteUser);
 
 export default router;

@@ -360,9 +360,9 @@ export default function Home(props) {
       </Box>
       <Dialog open={open} onClose={handleClose}>
         {whichForm == "Active" ? (
-          <Forms.ActiveDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
+          <Forms.ActiveDialog id={selection} handleClose={handleClose} refetch={refetch} />
         ) : whichForm == "DeActive" ? (
-          <Forms.DeActiveDialog id={selection[0]} handleClose={handleClose} refetch={refetch} />
+          <Forms.DeActiveDialog id={selection} handleClose={handleClose} refetch={refetch} />
         ) : whichForm == "Update" ? (
           <Forms.updateDialog
             refetch={refetch}

@@ -129,15 +129,37 @@ const updateUser = async (req, res) => {
     });
   }
 };
+const updateUsers = async (req, res) => {
+  try {
+    const id = req.body.id;
+    const value = req.body.status;
+
+    console.log(req.body);
+
+    User.updateMany({ _id: { $in: id } }, { status: value }).then((result) => {
+      res.status(200).json({
+        succeded: true,
+        message: "Succesfully Updated",
+        result,
+      });
+    });
+  } catch (error) {
+    res.status(500).json({
+      succeded: false,
+      message: "Oh no, There is a Problem...",
+      error,
+    });
+  }
+};
 const deleteUser = async (req, res) => {
   try {
     const id = req.body.id;
 
-    User.deleteMany({ _id: { $in: id } }).then((res) => {
+    User.deleteMany({ _id: { $in: id } }).then((result) => {
       res.status(200).json({
         succeded: true,
         message: "Succesfully Deleted",
-        res,
+        result,
       });
     });
   } catch (error) {
@@ -149,4 +171,11 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { createUser, loginUser, updateUser, getAllUsers, deleteUser };
+export {
+  createUser,
+  loginUser,
+  updateUser,
+  getAllUsers,
+  deleteUser,
+  updateUsers,
+};
