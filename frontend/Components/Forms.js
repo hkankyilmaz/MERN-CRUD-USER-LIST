@@ -212,9 +212,10 @@ export function updateDialog(props) {
           Please Fill in the blanks that you want to the update..!
         </DialogContentText>
         <ThemeProvider theme={defaultTheme}>
-          <Container style={{ width: "100vw" }} component="main" maxWidth="xs">
+          <Container  component="main" maxWidth="xs">
             <CssBaseline />
             <Box
+            className="max-sm:w-[300px]"
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -223,7 +224,6 @@ export function updateDialog(props) {
             >
               <Box
                 ref={editForm}
-                className="w-[350px]"
                 component="form"
                 noValidate
                 onSubmit={handleSubmit(onSubmit)}

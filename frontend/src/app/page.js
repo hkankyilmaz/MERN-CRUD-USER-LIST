@@ -253,7 +253,7 @@ export default function Home(props) {
               <MenuIcon />
             </IconButton>
             <Typography
-              className="text-transparent bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold"
+              className="hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold"
               variant="h6"
               noWrap
               component="div"
@@ -310,7 +310,7 @@ export default function Home(props) {
           sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }}}
         >
           <Toolbar />
-          <div className="mt-2 mb-3  flex justify-end">
+          <div className="mt-2 mb-3  flex justify-start sm:justify-end">
             { 
              /**
              * if remove the comment at the button that below
@@ -318,6 +318,7 @@ export default function Home(props) {
              * but you must not remove comment line at the update button..!
              */
              }
+            { /* <p className="sm:hidden text-transparent text-2xl mr-16 bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold">User</p> */ }
             <button
               //disabled={selection.length !== 1 ? true : false}
               onClick={() => { setWhichForm("Active"); setOpen(true); }}           

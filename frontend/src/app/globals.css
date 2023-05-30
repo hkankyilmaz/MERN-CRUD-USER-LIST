@@ -45,3 +45,11 @@ html {
 [data-testid="MenuIcon"] {
   color: #1976d2 !important;
 }
+
+/* Mobile View fixes */
+
+@media(max-width:500px) {
+  body {
+    overflow-y: hidden;
+  }
+}
