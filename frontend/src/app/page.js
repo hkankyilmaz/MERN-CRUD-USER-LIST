@@ -63,10 +63,6 @@ import {
   GridToolbarExport,
 } from "@mui/x-data-grid-premium";
 
-const actions = [
-  { icon: <LogoutIcon onClick= {()=> signOut()} />, name: "Log Out" },
-  { icon: <UpgradeIcon />, name: "Upgrade Info" },
-];
 
 const drawerWidth = 240;
 
@@ -76,11 +72,13 @@ export default function Home(props) {
   const [selection, setselection] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [whichForm, setWhichForm] = React.useState();
-  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  
   const { data: session } = useSession();
-
+  console.log(session)
+  
+  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
+  
   const { window } = props;
 
   const handleDrawerToggle = () => {
@@ -90,6 +88,23 @@ export default function Home(props) {
   const handleClose = () => {
       setOpen(false);
   };
+
+  /* User button actions-- located side bar bottom */
+
+  const actions = [
+    { icon: <LogoutIcon onClick={() => signOut()} />, name: "Log Out" },
+    {
+      icon: (
+        <UpgradeIcon
+          onClick={() => {
+            setWhichForm("Update");
+            setOpen(true);
+          }}
+        />
+      ),
+      name: "Upgrade Info",
+    },
+  ];
 
   const CustomToolbar = () => (
     <GridToolbarContainer>
@@ -376,7 +391,7 @@ export default function Home(props) {
         ) : whichForm == "Update" ? (
           <Forms.updateDialog
             refetch={refetch}
-            row={data.users.filter((item) => item._id == selection[0])}
+            row={selection.length == 0 ? data.users.filter((item) => item.email == session.user.email) :data.users.filter((item) => item._id == selection[0])}
             handleClose={handleClose}
           />
         ) : whichForm == "Delete" ? (
