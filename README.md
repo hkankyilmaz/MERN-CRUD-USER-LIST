@@ -1,4 +1,4 @@
-<h2 align="center">🏆 MALWATİON HİRİNG CASE🏆</h2>
+<h2 align="center">🏆 MALWATİON HİRİNG CASE 🏆</h2>
 <hr>
 <br>
 
@@ -58,7 +58,8 @@
 <br>
 
 <h3 align="left">General Info</h3>
-<hr>
+<hr> 
+
 The user should be able to make the following entries
 
 - Name
@@ -96,13 +97,25 @@ Project Details
 <h3 align="left">Features</h3>
 <hr>
 
-- Lorem Ipsum.
+- There two button for change to user status without open the update dialog.. (Active/DeActive)
+- User can multiple update accounts status at the same time.
+- User can multiple delete account at the same time.
+- User can update one account at the same time.
+- Each account has a log about CRUD process.
+- Each Form has a validation and error message (dynamicly).
+- In case of clicking on a different address, a 404 not found page is shown to the user.
+- Each user have a avatar depand on your gender.If User dont specify your gender unknown avatar  will be assigned to user.
+- User list is refetched after Each update process.
+- There are user interface that show api request is contiuning. ( loading , spinner)
 
 <br>
 <h3 align="left">Restricts</h3>
 <hr>
 
-- Lorem Ipsum.
+- CRUD buttons are inactive if user dont select the user account row.
+- User dont CRUD process İf user's role is "User" (excluding own info).
+- Just "Super Admin" see the account's log.
+- İf user want to register user must specify strong password and email that already have not registered.
 
 <br>
 <h3 align="left">Deployment</h3>
