@@ -37,5 +37,5 @@
 }
 
 ._btn {
-  @apply bg-[#4899ea] text-white hover:bg-[#1b80e4]  sm:w-[125px]
+  @apply bg-[#4899ea] text-white hover:bg-[#1b80e4] sm:w-[125px]
 }
