@@ -78,9 +78,9 @@ export default function Home(props) {
   const currentUser = useSelector(state => state.user);
   
   const { data: session } = useSession();
-  console.log(session)
-  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
 
+  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
+  
   const { window } = props;
 
   const handleDrawerToggle = () => {
@@ -335,15 +335,18 @@ export default function Home(props) {
              */
              }
             { /* <p className="sm:hidden text-transparent text-2xl mr-16 bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold">User</p> */ }
+
+            {!isLoading ?
+            <>
             <button
-              //disabled={selection.length !== 1 ? true : false}
-              onClick={() => { setWhichForm("Active"); setOpen(true); }}           
+              disabled={selection.length < 1 ? true : false}
+              onClick={() => { setWhichForm("Active"); setOpen(true); }}
               className="btn bg-green-500/75 hover:bg-green-500"
             >
               <CheckIcon className="text-white" />
             </button>
             <button
-             //disabled={selection.length !== 1 ? true : false}
+             disabled={selection.length < 1 ? true : false}
               onClick={() => {  setWhichForm("DeActive"); setOpen(true);}}
               className="btn bg-orange-400/75 hover:bg-orange-400"
             >
@@ -357,12 +360,16 @@ export default function Home(props) {
               <EditIcon className="text-white" />
             </button>
             <button
-              //disabled={selection.length !== 1 ? true : false}
+              disabled={selection.length < 1 ? true : false}
               onClick={() => { setWhichForm("Delete");setOpen(true);}}
               className="btn bg-red-700/75 hover:bg-red-700"
             >
               <DeleteForeverIcon className="text-white" />
             </button>
+            </>
+            : ""
+
+            }
           </div>
           {!isLoading ?
             <DataGridPremium
