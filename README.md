@@ -12,10 +12,10 @@
 <hr>
 <br>
 
-- This project is a hiring intership program prepared by [Malwation](https://malwation.com/) on application development
+- This project is a hiring intership program prepared by [Malwation](https://malwation.com/) on application development.
 - Case is wep application about users list that have different functionality.
 - There are two case for this program that frontend web development and backend web development.
-- My case includes two options.Well My app is Full-Stack web development [ MERN Stack (Next.js) ].
+- My case includes two options.So My app is Full-Stack web development [ MERN Stack (Next.js) ].
 
 <br>
 <br>
@@ -69,14 +69,28 @@ The user should be able to make the following entries
 Goal
 
 - Taking the above information from the user as input in a form
-- Create User Account
-- Update User Account
-- Delete User Account
+- Create User Account by registering information to the database
+- Update User Account by registering information to the database
+- Delete User Account by removing information in the database
 
 Project Details
 
-- Tailwindcss is used for css edits.
+- Tailwindcss, pure css and metarial ui built in css-styles features is used for css edits.
 - It is designed as a single page application.
+- Next.js is used for Frontend web development, Next Auth is used for Auth process.
+- There are 3 (three) page. Main page, login page and register page.
+- Login page has a animation that trigger with mouse scroling.
+- User need to scroling to reach login form when in the login route.
+- There are one main custom component (Forms.js)  file that contains 4 form component and Icon Component.
+- Also in some files has micro components.
+- App has protected routes.
+- İf user hasnt token user will redirect to login route.
+- İf user has token user will redirect to main route.
+- Login process implements via next.js built-in api routes.
+- Other process about database implements via node.js server.
+- There are function that able to auth process in the server but theese are inactive.( Next auth used).
+- These can be activated İf desired.
+- When user account createted The password firstly hashed and after registered.
 
 <br>
 <h3 align="left">Features</h3>
