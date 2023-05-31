@@ -76,13 +76,12 @@ export default function Home(props) {
   const [selection, setselection] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [whichForm, setWhichForm] = React.useState();
-
-  const { isFetching, isLoading, refetch, data } = useGetUsersQuery();
+  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const { data: session } = useSession();
 
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -386,7 +385,7 @@ export default function Home(props) {
           <p>Opss, There is a Problem !!!!</p>
         )}
       </Dialog>
-      <Backdrop open={isFetching | isLoading} >
+      <Backdrop open={isFetching | isLoading } >
         <CircularProgress sx={{color:"white"}} />
       </Backdrop>
     </main>

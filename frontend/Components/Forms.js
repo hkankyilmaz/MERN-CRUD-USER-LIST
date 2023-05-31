@@ -2,23 +2,17 @@ import React from "react";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -38,6 +32,8 @@ import {
   useUsersUpdateMutation,
 } from "../src/app/store/features/userApiSlice";
 
+/* Button Loading effect */
+
 function Icon() {
   return (
     <span>
@@ -52,9 +48,10 @@ function Icon() {
   );
 }
 
+/* Delete User Form */
+
 export function deleteDialog(props) {
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
-  console.log({ id: props.id });
 
   const handleDelete = () => {
     deleteUser({ id: props.id })
@@ -89,6 +86,8 @@ export function deleteDialog(props) {
     </>
   );
 }
+
+/* DeActive User Form */
 
 export function DeActiveDialog(props) {
   const [usersUpdate, { isLoading, isFetching, data }] =
@@ -128,6 +127,8 @@ export function DeActiveDialog(props) {
   );
 }
 
+/* Active User Form */
+
 export function ActiveDialog(props) {
   const [usersUpdate, { isLoading, isFetching, data }] =
     useUsersUpdateMutation();
@@ -165,6 +166,8 @@ export function ActiveDialog(props) {
     </>
   );
 }
+
+/* Update User Form */
 
 const defaultTheme = createTheme();
 
