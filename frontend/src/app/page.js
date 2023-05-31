@@ -42,6 +42,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 import { useGetUsersQuery } from "./store/features/userApiSlice";
+import { useSelector, useDispatch } from 'react-redux'
 
 import { useSession, signOut, getSession } from "next-auth/react";
 
@@ -73,9 +74,11 @@ export default function Home(props) {
   const [open, setOpen] = React.useState(false);
   const [whichForm, setWhichForm] = React.useState();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const currentUser = useSelector(state => state.user);
   
   const { data: session } = useSession();
-  
+  console.log(session)
   const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
 
   const { window } = props;

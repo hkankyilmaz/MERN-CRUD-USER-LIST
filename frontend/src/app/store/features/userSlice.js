@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  firstname:"",
+  lastname:"",
   name: "",
   email: "",
+  gender:"",
   phone: "",
   role: "",
-  active: false,
+  status: "",
 };
 
 export const userSlice = createSlice({
@@ -14,14 +17,16 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.name = action.payload.name;
+      state.firstname = action.payload.firstname;
+      state.lastname = action.payload.lastname;
       state.email = action.payload.email;
       state.phone = action.payload.phone;
       state.role = action.payload.role;
-      state.active = action.payload.active;
+      state.status = action.payload.status;
     },
   },
 });
 
-export const { whoIsUser } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 
 export default userSlice.reducer;

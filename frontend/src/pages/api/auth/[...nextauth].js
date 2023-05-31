@@ -31,8 +31,28 @@ export default NextAuth({
           return signInUser({ user, password });
         }
       },
+      
     }),
   ],
+  callbacks: {
+    async jwt({token, user}) {
+  
+       if (user?.id) {
+           token.id = user.id
+       }
+       if (user?.role) {
+           token.role = user.role;
+       }
+      
+       return token
+    },
+    async session({session, token}) {
+        session.user.id = token.id;
+        session.user.role = token.role;
+   
+        return session;
+    }
+  },
   pages: {
     signIn: "/login",
   },
