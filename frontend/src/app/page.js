@@ -75,10 +75,9 @@ export default function Home(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   
   const { data: session } = useSession();
-  console.log(session)
   
   const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
-  
+
   const { window } = props;
 
   const handleDrawerToggle = () => {

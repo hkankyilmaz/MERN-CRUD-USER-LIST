@@ -426,7 +426,7 @@ export function updateDialog(props) {
                       </InputLabel>
                       <Select
                         labelId="Role"
-                        defaultValue={props.row[0].role ? props.row.role : ""}
+                        defaultValue={props.row[0].role ? props.row[0].role : ""}
                         id="role"
                         label="role"
                         {...register("role", {

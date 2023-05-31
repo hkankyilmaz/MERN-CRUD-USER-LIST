@@ -101,6 +101,7 @@ Project Details
 - User can multiple update accounts status at the same time.
 - User can multiple delete account at the same time.
 - User can update one account at the same time.
+- When user registered some features default assigned. (role:User , status:"Active")
 - Each account has a log about CRUD process.
 - Each Form has a validation and error message (dynamicly).
 - In case of clicking on a different address, a 404 not found page is shown to the user.
