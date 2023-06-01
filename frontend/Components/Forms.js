@@ -62,6 +62,7 @@ function Icon() {
 /*---------------------- "Delete" Action User Form ----------------------*/
 
 export function deleteDialog(props) {
+  const { data: session, status, update } = useSession();
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
 
   const handleDelete = () => {
@@ -71,7 +72,7 @@ export function deleteDialog(props) {
         toast.success("Successfuly Deleted");
         props.handleClose();
         props.refetch();
-        if (session?.user._doc._id == props.id) signOut();
+        if (session?.user?.id == props.id) signOut();
       })
       .catch((err) => toast.error("Opps, There is a Problem..."));
   };
@@ -87,11 +88,7 @@ export function deleteDialog(props) {
         <Button className="_btn" onClick={props.handleClose}>
           Cancel
         </Button>
-        <Button
-          disabled={isLoading | isFetching}
-          className="_btn"
-          onClick={handleDelete}
-        >
+        <Button className="_btn" onClick={handleDelete}>
           {isLoading | isFetching ? <Icon /> : "Yes I'am Sure"}
         </Button>
       </DialogActions>
@@ -103,6 +100,7 @@ export function deleteDialog(props) {
 /*---------------------- "DeActive" Action User Form ----------------------*/
 
 export function DeActiveDialog(props) {
+  const { data: session, status, update } = useSession();
   const [usersUpdate, { isLoading, isFetching, data }] =
     useUsersUpdateMutation();
 
@@ -118,9 +116,11 @@ export function DeActiveDialog(props) {
           ...session,
           user: { ...session?.user, status: "DeActive" },
         };
-        await update(newSession);
+        if (props?.id?.includes(session.user.id)) await update(newSession);
       })
-      .catch((err) => toast.error("Opps, There is a Problem..."));
+      .catch((err) => {
+        toast.error("Opps, There is a Problem...");
+      });
   };
   return (
     <>
@@ -131,11 +131,7 @@ export function DeActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button
-          disabled={isLoading | isFetching}
-          className="_btn"
-          onClick={props.handleClose}
-        >
+        <Button className="_btn" onClick={props.handleClose}>
           Cancel
         </Button>
         <Button className="_btn" onClick={handleUpdates}>
@@ -151,10 +147,12 @@ export function DeActiveDialog(props) {
 /*----------------------- "Active" Action User Form -----------------------*/
 
 export function ActiveDialog(props) {
+  const { data: session, status, update } = useSession();
   const [usersUpdate, { isLoading, isFetching, data }] =
     useUsersUpdateMutation();
 
   const handleUpdates = () => {
+    console.log(props.id);
     usersUpdate({ status: "Active", id: props.id })
       .unwrap()
       .then(async (res) => {
@@ -165,9 +163,12 @@ export function ActiveDialog(props) {
           ...session,
           user: { ...session?.user, status: "Active" },
         };
-        await update(newSession);
+        if (props?.id?.includes(session.user.id)) await update(newSession);
       })
-      .catch((err) => toast.error("Opps, There is a Problem..."));
+      .catch((err) => {
+        toast.error("Opps, There is a Problem...");
+        console.log(err);
+      });
   };
   return (
     <>
@@ -178,11 +179,7 @@ export function ActiveDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button
-          disabled={isLoading | isFetching}
-          className="_btn"
-          onClick={props.handleClose}
-        >
+        <Button className="_btn" onClick={props.handleClose}>
           Cancel
         </Button>
         <Button className="_btn" onClick={handleUpdates}>
@@ -229,8 +226,7 @@ export function updateDialog(props) {
           ...session,
           user: { ...session?.user, role: data.role, status: data.status },
         };
-        console.log(newSession);
-        await update(newSession);
+        if (props.row[0].id == session.user.id) await update(newSession);
       })
       .catch((err) => {
         if (err.data.error.code == 11000) {
@@ -536,11 +532,7 @@ export function updateDialog(props) {
                   </Grid>
                 </Grid>
                 <DialogActions>
-                  <Button
-                    disabled={isLoading | isFetching}
-                    className="_btn"
-                    onClick={props.handleClose}
-                  >
+                  <Button className="_btn" onClick={props.handleClose}>
                     Cancel
                   </Button>
                   <Button className="_btn" type="submit">
