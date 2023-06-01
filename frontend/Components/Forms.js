@@ -108,10 +108,16 @@ export function DeActiveDialog(props) {
   const handleUpdates = () => {
     usersUpdate({ status: "DeActive", id: props.id })
       .unwrap()
-      .then((res) => {
+      .then(async (res) => {
         toast.success("Successfuly Updated");
         props.handleClose();
         props.refetch();
+
+        const newSession = {
+          ...session,
+          user: { ...session?.user, status: "DeActive" },
+        };
+        await update(newSession);
       })
       .catch((err) => toast.error("Opps, There is a Problem..."));
   };
@@ -150,10 +156,15 @@ export function ActiveDialog(props) {
   const handleUpdates = () => {
     usersUpdate({ status: "Active", id: props.id })
       .unwrap()
-      .then((res) => {
+      .then(async (res) => {
         toast.success("Successfuly Updated");
         props.handleClose();
         props.refetch();
+        const newSession = {
+          ...session,
+          user: { ...session?.user, status: "Active" },
+        };
+        await update(newSession);
       })
       .catch((err) => toast.error("Opps, There is a Problem..."));
   };
@@ -218,9 +229,7 @@ export function updateDialog(props) {
           user: { ...session?.user, role: data.role, status: data.status },
         };
         console.log(newSession);
-        await update(newSession)
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
+        await update(newSession);
       })
       .catch((err) => {
         if (err.data.error.code == 11000) {
