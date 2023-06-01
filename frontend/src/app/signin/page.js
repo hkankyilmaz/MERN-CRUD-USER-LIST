@@ -23,6 +23,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import mouse from "../../../assets/mouse.png";
 
+import ErrMessage from "../../../Components/ErrMessage";
+
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -206,18 +208,7 @@ export default function SignIn() {
                   <ErrorMessage
                     errors={errors}
                     name="email"
-                    render={({ message }) => (
-                      <p className="text-xs text-red-900 ml-1">
-                        <ErrorIcon
-                          sx={{
-                            marginRight: "3px",
-                            color: "#ff9999",
-                            fontSize: "17px",
-                          }}
-                        />
-                        {message}
-                      </p>
-                    )}
+                    render={({ message }) => <ErrMessage message={message} />}
                   />
                   <TextField
                     margin="normal"
@@ -239,18 +230,7 @@ export default function SignIn() {
                   <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={({ message }) => (
-                      <p className="text-xs text-red-900 ml-1">
-                        <ErrorIcon
-                          sx={{
-                            marginRight: "3px",
-                            color: "#ff9999",
-                            fontSize: "17px",
-                          }}
-                        />
-                        {message}
-                      </p>
-                    )}
+                    render={({ message }) => <ErrMessage message={message} />}
                   />
 
                   <Button

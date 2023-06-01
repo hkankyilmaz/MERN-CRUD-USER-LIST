@@ -16,6 +16,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
+import ErrMessage from "../../../Components/ErrMessage";
+
 import { useRouter } from "next/navigation";
 
 import { useAppSelector, useAppDispatch } from ".././store/hook";
@@ -66,8 +68,14 @@ export default function SignUp() {
   const router = useRouter();
   const [registerUser, { isLoading, data }] = useRegisterUserMutation();
 
-  const { register, handleSubmit, setError, watch, formState: { errors } } = useForm();
- 
+  const {
+    register,
+    handleSubmit,
+    setError,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const onSubmit = async (data) => {
     console.log(data);
     registerUser({
@@ -76,8 +84,8 @@ export default function SignUp() {
       password: data.password,
       firstname: data.firstname,
       lastname: data.lastname,
-      status:"Active",
-      role:"User"
+      status: "Active",
+      role: "User",
     })
       .unwrap()
       .then((res) => {
@@ -148,18 +156,7 @@ export default function SignUp() {
                 <ErrorMessage
                   errors={errors}
                   name="firstname"
-                  render={({ message }) => (
-                    <p className="text-xs text-red-900 ml-1">
-                      <ErrorIcon
-                        sx={{
-                          marginRight: "3px",
-                          color: "#ff9999",
-                          fontSize: "17px",
-                        }}
-                      />
-                      {message}
-                    </p>
-                  )}
+                  render={({ message }) => <ErrMessage message={message} />}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -182,18 +179,7 @@ export default function SignUp() {
                 <ErrorMessage
                   errors={errors}
                   name="lastname"
-                  render={({ message }) => (
-                    <p className="text-xs text-red-900 ml-1">
-                      <ErrorIcon
-                        sx={{
-                          marginRight: "3px",
-                          color: "#ff9999",
-                          fontSize: "17px",
-                        }}
-                      />
-                      {message}
-                    </p>
-                  )}
+                  render={({ message }) => <ErrMessage message={message} />}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -216,18 +202,7 @@ export default function SignUp() {
                 <ErrorMessage
                   errors={errors}
                   name="email"
-                  render={({ message }) => (
-                    <p className="text-xs text-red-900 ml-1">
-                      <ErrorIcon
-                        sx={{
-                          marginRight: "3px",
-                          color: "#ff9999",
-                          fontSize: "17px",
-                        }}
-                      />
-                      {message}
-                    </p>
-                  )}
+                  render={({ message }) => <ErrMessage message={message} />}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -254,18 +229,7 @@ export default function SignUp() {
                 <ErrorMessage
                   errors={errors}
                   name="password"
-                  render={({ message }) => (
-                    <p className="text-xs text-red-900 ml-1">
-                      <ErrorIcon
-                        sx={{
-                          marginRight: "3px",
-                          color: "#ff9999",
-                          fontSize: "17px",
-                        }}
-                      />
-                      {message}
-                    </p>
-                  )}
+                  render={({ message }) => <ErrMessage message={message} />}
                 />
               </Grid>
             </Grid>

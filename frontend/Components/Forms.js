@@ -16,11 +16,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ErrorIcon from "@mui/icons-material/Error";
 
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
+
+import ErrMessage from "./ErrMessage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
@@ -287,18 +288,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="firstname"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -323,18 +313,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="lastname"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -360,18 +339,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="email"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -397,18 +365,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="phone"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -437,18 +394,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="gender"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -478,18 +424,7 @@ export function updateDialog(props) {
                     <ErrorMessage
                       errors={errors}
                       name="role"
-                      render={({ message }) => (
-                        <p className="text-xs text-red-900 ml-1">
-                          <ErrorIcon
-                            sx={{
-                              marginRight: "3px",
-                              color: "#ff9999",
-                              fontSize: "17px",
-                            }}
-                          />
-                          {message}
-                        </p>
-                      )}
+                      render={({ message }) => <ErrMessage message={message} />}
                     />
                   </Grid>
                   <Grid item xs={12}>
