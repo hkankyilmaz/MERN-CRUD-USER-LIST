@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import Button from "@mui/material/Button";
@@ -24,6 +25,8 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 
+import { useSession } from "next-auth/react";
+
 import validator from "validator";
 
 import {
@@ -32,7 +35,14 @@ import {
   useUsersUpdateMutation,
 } from "../src/app/store/features/userApiSlice";
 
-/* Button Loading effect */
+/**
+ * There are 5 (five) component.
+ * Maybe each component can be put in a different file.
+ * If it is seem complicated.
+ * I think it is not neccessary for this app.
+ */
+
+/*------------------------- Button Loading UI --------------------------*/
 
 function Icon() {
   return (
@@ -47,8 +57,9 @@ function Icon() {
     </span>
   );
 }
+/*-----------------------------------------------------------------------*/
 
-/* Delete User Form */
+/*---------------------- "Delete" Action User Form ----------------------*/
 
 export function deleteDialog(props) {
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
@@ -86,8 +97,9 @@ export function deleteDialog(props) {
     </>
   );
 }
+/*-------------------------------------------------------------------------*/
 
-/* DeActive User Form */
+/*---------------------- "DeActive" Action User Form ----------------------*/
 
 export function DeActiveDialog(props) {
   const [usersUpdate, { isLoading, isFetching, data }] =
@@ -127,7 +139,9 @@ export function DeActiveDialog(props) {
   );
 }
 
-/* Active User Form */
+/*-------------------------------------------------------------------------*/
+
+/*----------------------- "Active" Action User Form -----------------------*/
 
 export function ActiveDialog(props) {
   const [usersUpdate, { isLoading, isFetching, data }] =
@@ -167,12 +181,15 @@ export function ActiveDialog(props) {
   );
 }
 
-/* Update User Form */
+/*-------------------------------------------------------------------------*/
+
+/*----------------------- "Update" Action User Form -----------------------*/
 
 const defaultTheme = createTheme();
 
 export function updateDialog(props) {
   const [updateUser, { isLoading, isFetching, data }] = useUserUpdateMutation();
+  const { data: session, status, update } = useSession();
 
   const editForm = React.useRef();
 
@@ -191,10 +208,19 @@ export function updateDialog(props) {
       _id: props.row[0]._id,
     })
       .unwrap()
-      .then((res) => {
+      .then(async (res) => {
         toast.success("Successfuly Updated");
         props.handleClose();
         props.refetch();
+
+        const newSession = {
+          ...session,
+          user: { ...session?.user, role: data.role, status: data.status },
+        };
+        console.log(newSession);
+        await update(newSession)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         if (err.data.error.code == 11000) {
@@ -215,10 +241,10 @@ export function updateDialog(props) {
           Please Fill in the blanks that you want to the update..!
         </DialogContentText>
         <ThemeProvider theme={defaultTheme}>
-          <Container  component="main" maxWidth="xs">
+          <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
-            className="max-sm:w-[300px]"
+              className="max-sm:w-[300px]"
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -426,7 +452,9 @@ export function updateDialog(props) {
                       </InputLabel>
                       <Select
                         labelId="Role"
-                        defaultValue={props.row[0].role ? props.row[0].role : ""}
+                        defaultValue={
+                          props.row[0].role ? props.row[0].role : ""
+                        }
                         id="role"
                         label="role"
                         {...register("role", {
@@ -517,3 +545,4 @@ export function updateDialog(props) {
     </>
   );
 }
+/*-------------------------------------------------------------------------*/

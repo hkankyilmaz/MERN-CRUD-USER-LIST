@@ -44,7 +44,7 @@ import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { useGetUsersQuery } from "./store/features/userApiSlice";
 import { useSelector, useDispatch } from 'react-redux'
 
-import { useSession, signOut, getSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 import Dialog from "@mui/material/Dialog";
 
@@ -77,8 +77,8 @@ export default function Home(props) {
 
   const currentUser = useSelector(state => state.user);
   
-  const { data: session } = useSession();
-
+  const { data: session, update } = useSession();
+  console.log(session)
   const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
   
   const { window } = props;

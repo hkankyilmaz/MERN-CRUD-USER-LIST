@@ -31,27 +31,20 @@ export default NextAuth({
           return signInUser({ user, password });
         }
       },
-      
     }),
   ],
   callbacks: {
-    async jwt({token, user}) {
-  
-       if (user?.id) {
-           token.id = user.id
-       }
-       if (user?.role) {
-           token.role = user.role;
-       }
-      
-       return token
+    async jwt({ token, user, trigger, session }) {
+      if (trigger === "update") {
+        return { ...token, ...session.user };
+      }
+      return { ...token, ...user };
     },
-    async session({session, token}) {
-        session.user.id = token.id;
-        session.user.role = token.role;
-   
-        return session;
-    }
+
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
   },
   pages: {
     signIn: "/login",

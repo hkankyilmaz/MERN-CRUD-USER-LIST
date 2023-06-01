@@ -13,10 +13,9 @@ export function middleware(req) {
     }
   }
 
-    if ("/" == req.nextUrl.pathname) {
+  if ("/" == req.nextUrl.pathname) {
     if (!hasToken) {
       return NextResponse.redirect(new URL("/signin", req.url));
-    } 
+    }
   }
-  
 }
