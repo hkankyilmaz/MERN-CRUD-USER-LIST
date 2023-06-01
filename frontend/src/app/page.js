@@ -78,18 +78,11 @@ export default function Home(props) {
   const currentUser = useSelector(state => state.user);
   
   const { data: session, update } = useSession();
-  console.log(session)
-  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
-  
   const { window } = props;
+  const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const handleClose = () => {
-      setOpen(false);
-  };
+  const handleDrawerToggle = () => {setMobileOpen(!mobileOpen)};
+  const handleClose = () => {setOpen(false)};
 
   /* User button actions-- located side bar bottom */
 
