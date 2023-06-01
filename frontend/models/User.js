@@ -27,10 +27,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
     gender: {
-      type: Number,
+      type: String,
     },
     status: {
-      active: Boolean,
+      active: String,
     },
     log: [
       {

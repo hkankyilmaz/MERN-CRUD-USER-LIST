@@ -35,6 +35,16 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, trigger, session }) {
+      if (user?.id) {
+        token.id = user.id;
+      }
+      if (user?.role) {
+        token.role = user.role;
+      }
+      if (user?.status) {
+        token.status = user.status;
+      }
+
       if (trigger === "update") {
         return { ...token, ...session.user };
       }
@@ -42,7 +52,10 @@ export default NextAuth({
     },
 
     async session({ session, token }) {
-      session.user = token;
+      session.user.id = token.id;
+      session.user.role = token.role;
+      session.user.status = token.status;
+      //session.user = token;
       return session;
     },
   },

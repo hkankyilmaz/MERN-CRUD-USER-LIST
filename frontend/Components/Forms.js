@@ -25,7 +25,7 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 import validator from "validator";
 
@@ -68,9 +68,10 @@ export function deleteDialog(props) {
     deleteUser({ id: props.id })
       .unwrap()
       .then((res) => {
-        toast.success("Successfuly Updated");
+        toast.success("Successfuly Deleted");
         props.handleClose();
         props.refetch();
+        if (session?.user._doc._id == props.id) signOut();
       })
       .catch((err) => toast.error("Opps, There is a Problem..."));
   };
@@ -79,7 +80,7 @@ export function deleteDialog(props) {
       <DialogTitle>Delete Process</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Selected User will be Delete. Are you Sure ?
+          Selected User/Users will be Delete. Are you Sure ?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -126,7 +127,7 @@ export function DeActiveDialog(props) {
       <DialogTitle>DeActive Process</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Selected User will be Deactive. Are you Sure ?
+          Selected User/Users will be Deactive. Are you Sure ?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -173,7 +174,7 @@ export function ActiveDialog(props) {
       <DialogTitle>Active Process</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Selected User will be Active. Are you Sure ?
+          Selected User/Users will be Active. Are you Sure ?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
