@@ -47,7 +47,7 @@ import {
 
 /*------------------------- Button Loading UI --------------------------*/
 
-function Icon() {
+export function Icon() {
   return (
     <span>
       Loading...
@@ -107,8 +107,12 @@ export function DeActiveDialog(props) {
   const [usersUpdate, { isLoading, isFetching, data }] =
     useUsersUpdateMutation();
 
+  const { statusLog } = useLog(null, null, {
+    newStatus: "DeActive",
+  });
+
   const handleUpdates = () => {
-    usersUpdate({ status: "DeActive", id: props.id })
+    usersUpdate({ status: "DeActive", id: props.id, statusLog })
       .unwrap()
       .then(async (res) => {
         toast.success("Successfuly Updated");
@@ -153,9 +157,12 @@ export function ActiveDialog(props) {
   const { data: session, status, update } = useSession();
   const [usersUpdate, { isLoading, isFetching, data }] =
     useUsersUpdateMutation();
+  const { statusLog } = useLog(null, null, {
+    newStatus: "Active",
+  });
 
   const handleUpdates = () => {
-    usersUpdate({ status: "Active", id: props.id })
+    usersUpdate({ status: "Active", id: props.id, statusLog })
       .unwrap()
       .then(async (res) => {
         toast.success("Successfuly Updated");
@@ -213,7 +220,7 @@ export function updateDialog(props) {
     formState: { errors },
   } = useForm();
 
-  const values = watch();
+  const values = watch(); // watching all forms to register to changes to log.
   const { isChange, log } = useLog(props.row[0], values);
 
   const onSubmit = async (data) => {

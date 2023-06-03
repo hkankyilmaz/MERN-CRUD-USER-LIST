@@ -16,6 +16,7 @@ import Link from "next/link";
 import ErrorIcon from "@mui/icons-material/Error";
 
 import { useRouter } from "next/navigation";
+import { Icon } from "../../Components/Forms";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -23,7 +24,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import mouse from "../../../assets/mouse.png";
 
-import ErrMessage from "../../../Components/ErrMessage";
+import ErrMessage from "../../Components/ErrMessage";
 
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
@@ -55,6 +56,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
   const ref = React.useRef();
 
@@ -68,11 +70,13 @@ export default function SignIn() {
   console.log(errors);
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     const { email, password } = data;
     let options = { redirect: false, email, password };
 
     try {
       const res = await signIn("credentials", options);
+      setIsLoading(false);
       if (res.error == "Incorrect password!") {
         setError("password", { type: "cutom", message: "Incorrect password!" });
         toast.error("Opps, There is a Error...");
@@ -137,7 +141,7 @@ export default function SignIn() {
           <h2 className="panel-one-subtitle">
             This App is authored for recruiment case by @hkyilmaz
           </h2>
-          <p className="description">Scroling down please...</p>
+          <p className="description">Scroling down please to Login Form...</p>
           <Image src={mouse} width="200" alt="mouse" />
         </div>
       </section>
@@ -239,7 +243,7 @@ export default function SignIn() {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Sign In
+                    {isLoading ? <Icon /> : "Sing In"}
                   </Button>
                   <Grid container>
                     <Grid item xs>

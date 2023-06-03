@@ -138,10 +138,14 @@ const updateUsers = async (req, res) => {
   try {
     const id = req.body.id;
     const value = req.body.status;
+    const log = req.body.statusLog;
 
     console.log(req.body);
 
-    User.updateMany({ _id: { $in: id } }, { status: value }).then((result) => {
+    User.updateMany(
+      { _id: { $in: id } },
+      { status: value, $push: { log: { $each: log } } }
+    ).then((result) => {
       res.status(200).json({
         succeded: true,
         message: "Succesfully Updated",

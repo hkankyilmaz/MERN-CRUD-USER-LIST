@@ -13,10 +13,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ErrorIcon from "@mui/icons-material/Error";
 import Link from "next/link";
 
+import { Icon } from "../../Components/Forms";
+
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-import ErrMessage from "../../../Components/ErrMessage";
+import ErrMessage from "../../Components/ErrMessage";
 
 import { useRouter } from "next/navigation";
 
@@ -66,7 +68,8 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
   const router = useRouter();
-  const [registerUser, { isLoading, data }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, data, isFetching }] =
+    useRegisterUserMutation();
 
   const {
     register,
@@ -239,7 +242,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              {isLoading | isFetching ? <Icon /> : "Register"}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
