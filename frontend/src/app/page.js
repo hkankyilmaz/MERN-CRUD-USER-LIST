@@ -360,7 +360,7 @@ export default function Home(props) {
             <DataGridPremium
                className="h-full"
                getDetailPanelContent={({ row }) => <MasterInfo row={row}/> }
-               getDetailPanelHeight={({ row }) => 200} 
+               getDetailPanelHeight={({ row }) => 150} 
                {...cols}
                {...{ rows: data ? [...data.users].map((item, index) => ({ id__: index + 1,...item,  })) : []}}
                getRowId={(row) => row._id}

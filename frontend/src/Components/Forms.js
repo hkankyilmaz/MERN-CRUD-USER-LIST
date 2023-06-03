@@ -370,7 +370,6 @@ export function updateDialog(props) {
                       type="tel"
                       id="phone"
                       {...register("phone", {
-                        required: "This is required field",
                         validate: {
                           isMobilePhone: (value) =>
                             validator.isMobilePhone(value, "tr-TR") ||
@@ -396,9 +395,7 @@ export function updateDialog(props) {
                         labelId="demo-simple-select-helper-label"
                         id="gender"
                         label="Gender"
-                        {...register("gender", {
-                          required: "This is required field",
-                        })}
+                        {...register("gender", {})}
                       >
                         <MenuItem value="">
                           <em>None</em>
@@ -429,9 +426,6 @@ export function updateDialog(props) {
                           required: "This is required field",
                         })}
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
                         <MenuItem value="User">User</MenuItem>
                         <MenuItem value="Admin">Admin</MenuItem>
                         <MenuItem value="Super Admin">Super Admin</MenuItem>
@@ -457,9 +451,6 @@ export function updateDialog(props) {
                           required: "This is required field",
                         })}
                       >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
                         <MenuItem value="Active">Active</MenuItem>
                         <MenuItem value="DeActive">DeActive</MenuItem>
                       </Select>

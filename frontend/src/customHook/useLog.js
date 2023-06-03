@@ -21,7 +21,7 @@ function useLog(oldData, newData, whichStatus) {
   const [log, setLog] = useState([]);
 
   const statusLog = [
-    `Status:${whichStatus.newStatus} has been updated to by ${user} at ${nowDate}-${nowTime}`,
+    `Status:${whichStatus ? whichStatus.newStatus: ""} has been updated to by ${user} at ${nowDate}-${nowTime}`,
   ];
 
   useEffect(() => {
