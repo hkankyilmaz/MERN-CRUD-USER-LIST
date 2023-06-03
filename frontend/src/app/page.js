@@ -166,7 +166,7 @@ export default function Home(props) {
       },
       {
         field: "status",
-        headerName: "Status",
+        headerName: "Active",
         width: 125,
         editable: false,
         renderCell: (params) => (

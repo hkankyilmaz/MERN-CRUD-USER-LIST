@@ -81,7 +81,7 @@ export function deleteDialog(props) {
   };
   return (
     <>
-      <DialogTitle>Delete Process</DialogTitle>
+      <DialogTitle>Delete User</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Selected User/Users will be Delete. Are you Sure ?
@@ -131,10 +131,10 @@ export function DeActiveDialog(props) {
   };
   return (
     <>
-      <DialogTitle>DeActive Process</DialogTitle>
+      <DialogTitle>Update Statu</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Selected User/Users will be Deactive. Are you Sure ?
+          Selected User/Users will be Inactive. Are you Sure ?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -181,7 +181,7 @@ export function ActiveDialog(props) {
   };
   return (
     <>
-      <DialogTitle>Active Process</DialogTitle>
+      <DialogTitle>Update Statu</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Selected User/Users will be Active. Are you Sure ?
@@ -258,7 +258,7 @@ export function updateDialog(props) {
 
   return (
     <>
-      <DialogTitle>Update Process</DialogTitle>
+      <DialogTitle>Update User</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Please Fill in the blanks that you want to the update..!
