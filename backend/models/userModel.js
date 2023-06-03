@@ -19,9 +19,6 @@ const UserSchema = new mongoose.Schema(
     name: {
       type: String,
     },
-    lastname: {
-      type: String,
-    },
     phone: {
       type: Number,
     },
@@ -34,11 +31,7 @@ const UserSchema = new mongoose.Schema(
     status: {
       active: Boolean,
     },
-    log: [
-      {
-        type: String,
-      },
-    ],
+    log: [String],
   },
   {
     timestamps: true,

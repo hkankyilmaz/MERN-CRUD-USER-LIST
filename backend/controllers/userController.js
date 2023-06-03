@@ -103,10 +103,15 @@ const createToken = (userId) => {
 const updateUser = async (req, res) => {
   try {
     const docId = req.body._id;
-    const values = req.body;
+    let values = req.body;
+    const log = req.body.log;
+    delete values.log;
     delete values._id;
 
-    User.findByIdAndUpdate(docId, { $set: { ...values } })
+    User.findByIdAndUpdate(docId, {
+      $set: { ...values },
+      $push: { log: { $each: log } },
+    })
       .then((result) => {
         res.status(200).json({
           succeded: true,

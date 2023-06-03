@@ -36,6 +36,9 @@ html {
 .MuiDrawer-paper {
   overflow: hidden;
 }
+.MuiDataGrid-detailPanel {
+  padding: 20px 30px 30px 70px;
+}
 
 /* Dialog styles */
 
@@ -48,7 +51,7 @@ html {
 
 /* Mobile View fixes */
 
-@media(max-width:500px) {
+@media (max-width: 500px) {
   body {
     overflow-y: hidden;
   }

@@ -46,13 +46,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { useSession, signOut } from "next-auth/react";
 
+import MasterInfo from "../Components/MasterInfo"
+
 import Dialog from "@mui/material/Dialog";
 
 import man from "../../assets/man3.png";
 import women from "../../assets/women3.png";
 import unknown from "../../assets/unknown.png";
 
-import * as Forms from "../../Components/Forms";
+import * as Forms from "../Components/Forms";
 
 import {
   DataGridPremium,
@@ -76,7 +78,6 @@ export default function Home(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const currentUser = useSelector(state => state.user);
-  
   const { data: session, update } = useSession();
   const { window } = props;
   const {isFetching, isLoading, refetch, data } = useGetUsersQuery();
@@ -320,15 +321,6 @@ export default function Home(props) {
         >
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-start sm:justify-end">
-            { 
-             /**
-             * if remove the comment at the button that below
-             * User can update one line in the user list
-             * but you must not remove comment line at the update button..!
-             */
-             }
-            { /* <p className="sm:hidden text-transparent text-2xl mr-16 bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold">User</p> */ }
-
             {!isLoading ?
             <>
             <button
@@ -367,12 +359,8 @@ export default function Home(props) {
           {!isLoading ?
             <DataGridPremium
                className="h-full"
-               getDetailPanelContent={({ row }) => (
-                 <div className="master-container">
-                   <p className="font-bold">hello master info</p>
-                 </div>
-               )}
-               getDetailPanelHeight={({ row }) => 300} 
+               getDetailPanelContent={({ row }) => <MasterInfo row={row}/> }
+               getDetailPanelHeight={({ row }) => 200} 
                {...cols}
                {...{ rows: data ? [...data.users].map((item, index) => ({ id__: index + 1,...item,  })) : []}}
                getRowId={(row) => row._id}

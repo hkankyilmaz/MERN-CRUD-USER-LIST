@@ -21,6 +21,8 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
 
+import useLog from "../customHook/useLog";
+
 import ErrMessage from "./ErrMessage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,7 +36,7 @@ import {
   useUserUpdateMutation,
   useDeleteUserMutation,
   useUsersUpdateMutation,
-} from "../src/app/store/features/userApiSlice";
+} from "../app/store/features/userApiSlice";
 
 /**
  * There are 5 (five) component.
@@ -153,7 +155,6 @@ export function ActiveDialog(props) {
     useUsersUpdateMutation();
 
   const handleUpdates = () => {
-    console.log(props.id);
     usersUpdate({ status: "Active", id: props.id })
       .unwrap()
       .then(async (res) => {
@@ -198,8 +199,9 @@ export function ActiveDialog(props) {
 const defaultTheme = createTheme();
 
 export function updateDialog(props) {
-  const [updateUser, { isLoading, isFetching, data }] = useUserUpdateMutation();
-  const { data: session, status, update } = useSession();
+  const [updateUser, { isLoading, isFetching }] = useUserUpdateMutation();
+  const { data: session, update } = useSession();
+  const [newData, setNewData] = React.useState(props.row[0]);
 
   const editForm = React.useRef();
 
@@ -211,11 +213,17 @@ export function updateDialog(props) {
     formState: { errors },
   } = useForm();
 
+  const values = watch();
+  const { isChange, log } = useLog(props.row[0], values);
+
   const onSubmit = async (data) => {
+    setNewData(data);
+    console.log(log);
     updateUser({
       ...data,
       name: `${data.firstname} ${data.lastname}`,
       _id: props.row[0]._id,
+      log: log,
     })
       .unwrap()
       .then(async (res) => {
@@ -237,6 +245,7 @@ export function updateDialog(props) {
           });
         }
         toast.error(err.data.message);
+        console.log(err);
       });
   };
 
