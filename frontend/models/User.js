@@ -4,9 +4,11 @@ const UserSchema = new mongoose.Schema(
   {
     email: {
       type: String,
+      required: true,
     },
     password: {
       type: String,
+      reqired: true,
     },
     firstname: {
       type: String,
@@ -19,15 +21,19 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: Number,
+      default: null,
     },
     role: {
       type: String,
+      default: "User",
     },
     gender: {
       type: String,
+      default: null,
     },
     status: {
-      active: String,
+      type: String,
+      default: "Active",
     },
     log: [String],
   },

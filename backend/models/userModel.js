@@ -21,15 +21,19 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: Number,
+      default: null,
     },
     role: {
       type: String,
+      default: "User",
     },
     gender: {
       type: String,
+      default: null,
     },
     status: {
-      active: Boolean,
+      type: String,
+      default: "Active",
     },
     log: [String],
   },

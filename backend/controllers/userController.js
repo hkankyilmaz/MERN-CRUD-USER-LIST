@@ -110,7 +110,7 @@ const updateUser = async (req, res) => {
 
     User.findByIdAndUpdate(docId, {
       $set: { ...values },
-      $push: { log: { $each: log } },
+      $push: { log: { $each: log, $position: 0 } },
     })
       .then((result) => {
         res.status(200).json({
@@ -144,7 +144,7 @@ const updateUsers = async (req, res) => {
 
     User.updateMany(
       { _id: { $in: id } },
-      { status: value, $push: { log: { $each: log } } }
+      { status: value, $push: { log: { $each: log, $position: 0 } } }
     ).then((result) => {
       res.status(200).json({
         succeded: true,

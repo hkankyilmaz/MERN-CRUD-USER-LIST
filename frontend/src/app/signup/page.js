@@ -87,8 +87,6 @@ export default function SignUp() {
       password: data.password,
       firstname: data.firstname,
       lastname: data.lastname,
-      status: "Active",
-      role: "User",
     })
       .unwrap()
       .then((res) => {

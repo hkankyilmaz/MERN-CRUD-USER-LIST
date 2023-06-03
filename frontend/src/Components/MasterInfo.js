@@ -7,11 +7,13 @@ function MasterInfo({ row }) {
         row.log.map((item, idx) => (
           <>
             {idx == 0 ? (
-              <h3 className="font-bold text-slate-700 mb-1">User Update Log</h3>
+              <h3 key={99} className="font-bold text-slate-700 mb-1">
+                User Update Log
+              </h3>
             ) : (
               ""
             )}
-            <p className="font-bold text-slate-400 mb-1">
+            <p key={idx} className="font-bold text-slate-400 mb-1">
               {idx + 1}. {item}
             </p>
           </>

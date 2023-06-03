@@ -21,12 +21,22 @@ function useLog(oldData, newData, whichStatus) {
   const [log, setLog] = useState([]);
 
   const statusLog = [
-    `Status:${whichStatus ? whichStatus.newStatus: ""} has been updated to by ${user} at ${nowDate}-${nowTime}`,
+    `Status:${
+      whichStatus ? whichStatus.newStatus : ""
+    } has been updated to by ${user} at ${nowDate}-${nowTime}`,
   ];
 
   useEffect(() => {
     try {
-      setLog([]);
+      if (
+        oldData.email !== newData.email ||
+        oldData.phone !== +newData.phone ||
+        oldData.role !== newData.role ||
+        oldData.gender !== newData.gender ||
+        oldData.status !== newData.status
+      )
+        setLog([]);
+
       if (oldData.email !== newData.email) {
         setIsChange(true);
         setLog((prev) => [

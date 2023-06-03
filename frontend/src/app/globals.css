@@ -37,6 +37,7 @@ html {
   overflow: hidden;
 }
 .MuiDataGrid-detailPanel {
+  background-color: #f0f2f5 !important;
   padding: 20px 30px 30px 70px;
 }
 
