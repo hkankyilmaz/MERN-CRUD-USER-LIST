@@ -48,10 +48,10 @@
   @apply bg-orange-300 text-white hover:bg-orange-400 sm:w-[125px];
 }
 .sec-logwrapper {
-  @apply w-[100vw] sm:w-[70vw] h-[100vh] sm:h-[70vh] bg-[#f2f2f2] rounded-lg flex flex-col justify-start items-center relative overflow-hidden;
+  @apply w-[100vw] sm:w-[70vw] h-[100vh] sm:h-[70vh] bg-[#f2f2f2] rounded-lg flex flex-col justify-start items-center relative overflow-y-scroll;
 }
 .refetch-btn {
-  @apply absolute bottom-5 left-[50%] translate-x-[-50%] bg-red-300 p-3 hover:bg-red-400 rounded-md text-white font-bold;
+  @apply bottom-5 sm:bottom-[17.5%] left-[50%] translate-x-[-50%] bg-red-300 p-3 hover:bg-red-400 rounded-md text-white font-bold fixed;
 }
 
 .title-users {
