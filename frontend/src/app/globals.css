@@ -100,9 +100,11 @@ html {
 .MuiSpeedDial-root
   .MuiButtonBase-root:not(#SpeedDialbasicexample-actions *):hover {
   background-color: #1b80e4 !important ;
+  color: white !important;
 }
 
 .MuiDialogActions-root
   .MuiButtonBase-root:not(#SpeedDialbasicexample-actions *):hover {
   background-color: #1b80e4 !important ;
+  color: white !important;
 }
