@@ -57,3 +57,32 @@ html {
     overflow-y: hidden;
   }
 }
+
+/* Security Log Style */
+
+.sec-logwrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0px;
+  width: 60%;
+  background: #d10024;
+  opacity: 0.05;
+  -webkit-transform: skewX(-45deg) translateX(-90%);
+  -ms-transform: skewX(-45deg) translateX(-90%);
+  transform: skewX(-45deg) translateX(-90%);
+}
+.sec-logwrapper:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1px;
+  width: 100%;
+  background: #d10024;
+  opacity: 0.15;
+  -webkit-transform: skewX(-45deg) translateX(-110%);
+  -ms-transform: skewX(-45deg) translateX(-110%);
+  transform: skewX(-45deg) translateX(-110%);
+}

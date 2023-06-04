@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dbConnect from "./util/dbConnect.js";
 import userRoute from "./routes/userRoute.js";
+import { getAllSecLogs } from "./controllers/securityLogController.js";
 
 const app = express();
 
@@ -19,4 +20,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: true, credentials: true }));
 
 // routes
-app.use("/", userRoute);
+app.use("/user", userRoute);
+app.get("/log/security-logs", getAllSecLogs);

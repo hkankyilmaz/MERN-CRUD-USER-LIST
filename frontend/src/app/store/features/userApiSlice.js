@@ -7,42 +7,42 @@ export const userApiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => `users`,
+      query: () => `/user/users`,
     }),
     getSecurityLogs: builder.query({
-      query: () => `logs`,
+      query: () => `/log/security-logs`,
     }),
     getUser: builder.mutation({
       query: (user) => ({
-        url: "/login",
+        url: "/user/login",
         method: "POST",
         body: user,
       }),
     }),
     userUpdate: builder.mutation({
       query: (user) => ({
-        url: "/update",
+        url: "/user/update",
         method: "POST",
         body: user,
       }),
     }),
     usersUpdate: builder.mutation({
       query: (user) => ({
-        url: "/updates",
+        url: "/user/updates",
         method: "POST",
         body: user,
       }),
     }),
     deleteUser: builder.mutation({
       query: (user) => ({
-        url: "/delete",
+        url: "/user/delete",
         method: "POST",
         body: user,
       }),
     }),
     registerUser: builder.mutation({
       query: (user) => ({
-        url: "/register",
+        url: "/user/register",
         method: "POST",
         body: user,
       }),

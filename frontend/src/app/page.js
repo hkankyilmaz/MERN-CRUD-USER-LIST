@@ -23,9 +23,9 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useGetUsersQuery } from "./store/features/userApiSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import MasterInfo from "../Components/MasterInfo";
 
@@ -62,9 +62,6 @@ export default function Home(props) {
   };
   const handleClose = () => {
     setOpen(false);
-  };
-  const handleModalClose = () => {
-    setOpenModal(false);
   };
 
   const container =
@@ -114,16 +111,24 @@ export default function Home(props) {
             }}
             sx={MuiStyles.drawerOne}
           >
-            <Drawer_ setWhichForm={setWhichForm} open={open} />
+            <Drawer_
+              setWhichForm={setWhichForm}
+              open={open}
+              setOpenModal={setOpenModal}
+            />
           </Drawer>
           <Drawer variant="permanent" sx={MuiStyles.drwaerTwo} open>
-            <Drawer_ setWhichForm={setWhichForm} setOpen={setOpen} />
+            <Drawer_
+              setWhichForm={setWhichForm}
+              setOpen={setOpen}
+              setOpenModal={setOpenModal}
+            />
           </Drawer>
         </Box>
         <Box className="h-full" component="main" sx={MuiStyles.main_}>
           <Toolbar />
           <div className="mt-2 mb-3  flex justify-start sm:justify-end">
-            {!isLoading ? (
+            {!isLoading ? 
               <>
                 <button
                   className="btn bg-green-500/75 hover:bg-green-500"
@@ -166,9 +171,9 @@ export default function Home(props) {
                   <DeleteForeverIcon className="text-white" />
                 </button>
               </>
-            ) : (
+             : 
               ""
-            )}
+            }
           </div>
           {!isLoading ? (
             <DataGridPremium
@@ -198,19 +203,19 @@ export default function Home(props) {
         </Box>
       </Box>
       <Dialog open={open} onClose={handleClose}>
-        {whichForm == "Active" ? (
+        {whichForm == "Active" ? 
           <Forms.ActiveDialog
             id={selection}
             handleClose={handleClose}
             refetch={refetch}
           />
-        ) : whichForm == "DeActive" ? (
+         : whichForm == "DeActive" ? 
           <Forms.DeActiveDialog
             id={selection}
             handleClose={handleClose}
             refetch={refetch}
           />
-        ) : whichForm == "Update" ? (
+         : whichForm == "Update" ? 
           <Forms.updateDialog
             refetch={refetch}
             row={
@@ -220,22 +225,22 @@ export default function Home(props) {
             }
             handleClose={handleClose}
           />
-        ) : whichForm == "Delete" ? (
+         : whichForm == "Delete" ? 
           <Forms.deleteDialog
             rows={data.users}
             id={selection}
             handleClose={handleClose}
             refetch={refetch}
           />
-        ) : (
+         : 
           <p>Opss, There is a Problem !!!!</p>
-        )}
+        }
       </Dialog>
       <Backdrop open={isFetching | isLoading}>
         <CircularProgress sx={{ color: "white" }} />
       </Backdrop>
-      <Modal open={openModal}>
-        <SecurityLog handleClose={handleModalClose} />
+      <Modal open={openModal} className="flex justify-center items-center">
+        <SecurityLog setOpenModal={setOpenModal} />
       </Modal>
     </main>
   );

@@ -46,22 +46,33 @@ function Drawer_(props) {
       <Divider />
       <List>
         {["Users", "Security Log", "Mail", "Others"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {text == "Users" ? (
-                  <GroupIcon />
-                ) : text == "Security Log" ? (
-                  <TaskIcon />
-                ) : text == "Mail" ? (
-                  <MailIcon />
-                ) : (
-                  <CalendarViewMonthIcon />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+          <>
+            {text == "Security Log" ? (
+              <ListItem key={text} disablePadding>
+                <ListItemButton onClick={() => props.setOpenModal(true)}>
+                  <ListItemIcon>
+                    <CalendarViewMonthIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {text == "Users" ? (
+                      <GroupIcon />
+                    ) : text == "Mail" ? (
+                      <MailIcon />
+                    ) : (
+                      <CalendarViewMonthIcon />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            )}
+          </>
         ))}
       </List>
       <Divider />
