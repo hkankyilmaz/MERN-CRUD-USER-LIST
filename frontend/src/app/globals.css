@@ -124,3 +124,15 @@ form .MuiButtonBase-root:hover {
 .MuiFormControl-root {
   margin-bottom: 0.5rem !important;
 }
+
+@media (max-width: 640px) {
+  img,
+  video {
+    max-width: 30% !important;
+    height: auto !important;
+  }
+  .sign,
+  .speed-wrapper {
+    transform: translateY(-250px) !important;
+  }
+}

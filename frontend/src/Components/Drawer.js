@@ -89,6 +89,7 @@ function Drawer_(props) {
         ))}
       </List>
       <Box
+      className="speed-wrapper"
         sx={{
           height: "100%",
           transform: "translateZ(0px)",
@@ -110,7 +111,7 @@ function Drawer_(props) {
           ))}
         </SpeedDial>
       </Box>
-      <div className="h-full relative bg-[#F0F2F5]">
+      <div className="sign h-full relative bg-[#F0F2F5]">
         <span className="absolute top-[7px] sm:top-6 text-slate-400/80 left-[50%] translate-x-[-50%]">
           @hkyilmaz
         </span>
