@@ -95,6 +95,7 @@ html {
 .MuiDialogActions-root .MuiButtonBase-root,
 .MuiSpeedDial-root .MuiButtonBase-root:not(#SpeedDialbasicexample-actions *) {
   background-color: #4899ea !important ;
+  color: white !important;
 }
 
 .MuiSpeedDial-root
