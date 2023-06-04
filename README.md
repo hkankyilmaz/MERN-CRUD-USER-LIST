@@ -81,16 +81,22 @@ Project Details
 - Next.js is used for Frontend web development, Next Auth is used for Auth process.
 - There are 3 (three) page. Main page, login page and register page.
 - Login page has a animation that trigger with mouse scroling.
+    * User must scroling to reach to login form.
+<br>
+<br>
+   <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjJiMmM4OGFlMTU2ZjE4M2NmMzJlYTAyYjBlYzVhZWUxYjA3OGM1YyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/a7DADRQhTwsWd2DQDn/giphy.gif" />
+<br>
+<br>
 - User need to scroling to reach login form when in the login route.
 - There are one main custom component (Forms.js)  file that contains 4 form component and Icon Component.
 - Also in some files has micro components.
-- App has protected routes.
-- İf user hasnt token user will redirect to login route.
-- İf user has token user will redirect to main route.
 - Login process implements via next.js built-in api routes.
+- App has protected routes.
+    * if User has not session (via next auth) user will re-direct to login page.
+    * if User has session (via next auth) user will re-direct to main page. 
 - Other process about database implements via node.js server.
 - There are function that able to auth process in the server but theese are inactive.( Next auth used).
-- These can be activated İf desired.
+    * These can be activated İf desired.
 - When user account createted The password firstly hashed and after registered.
 
 <br>
@@ -101,6 +107,7 @@ Project Details
 - User can multiple update accounts status at the same time.
 - User can multiple delete account at the same time.
 - User can update one account at the same time.
+- Log is created after Each CRUD operation. 
 - When user registered some features default assigned. (role:User , status:"Active")
 - Each account has a log about CRUD process.
 - Each Form has a validation and error message (dynamicly).
@@ -114,27 +121,86 @@ Project Details
 <hr>
 
 - CRUD buttons are inactive if user dont select the user account row.
-- User dont CRUD process İf user's role is "User" (excluding own info).
-- Just "Super Admin" see the account's log.
+    * "Active" action button (first button) will be active if user select minumum one row.
+    * "Inactive" action button (second button) will be active if user select minumum one row.
+    * "Update" action button (third button) will be active if user just one row.
+    * "Delete" action button (fourth button) will be active if user select minumum one row.
+<br>
+<br>
+   <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2I2NjE2ZjUyNjcxZDg1NmY0NzEwYzBmZjNjZGNjMjFiYTRlZjU3MCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/BgGZMtJtcSxgkfjM0S/giphy.gif" />
+<br>
+<br>
+
+- User dont CRUD process İf user's role is "User" (excluding own info). /** This features removed it can be enabled if desired - Each user can crud process - */ 
+    * User can edit your info via Edit Info button.
+<br>
+<br>
+   <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmMzNTk1ZWNiZTBhZjQ1YzA0NmU5Y2Q0N2M4MzY3ZDFlMzA5YWUwMyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/7fAWBMfsEtY3gkdCRn/giphy.gif" />
+<br>
+<br>
+     
+- Just "Super Admin" see the account's log. /** This features removed it can be enabled if desired  - Each user can see logs - */
+    * There are two log list.First list is "updated users" logs and second list is "deleted users" logs.
+<br>
+<br>
+   <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWZkYjE0NGU2MmQ0NDE2ZWI0N2NlYWMwMjA0YTNjYTIzYTUxMzQ2NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/BlJlarkxN6Oli0N9aQ/giphy.gif" />
+<br>
+<br>
+<br>
+<br>
+   <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjY3ODQzMTYxNzcxMDE2MzMxMDUyYzNiOTUwOTZjZDM1Njc5Nzg4MCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/DRqgPKy4DtZjTjv4Uf/giphy.gif" />
+<br>
+<br>       
 - İf user want to register user must specify strong password and email that already have not registered.
+<br>
+<br>
+     <img align="center" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTMxNjJlODEyYTQyMjY5MzRlZGNmNThhNzU1NzgxOTkyNWNjMWIzNyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/s5ftclXgxnZGiFRrQK/giphy.gif" />
+<br>
+<br> 
 
 <br>
 <h3 align="left">Deployment</h3>
 <hr>
 
-This project was bootstrapped with [npx create-next-app@latest](https://nextjs.org/docs/getting-started/installation).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Development Mode:
+## 💻 Setup <br>
 
-    npm install --save
-    npm run dev
+### Install Dependencies
+
+```
+npm install
+```
+
+### Run the App in the Dev Server
+
+```
+  npm install --save
+  npm run dev
+```
+
+### to Build for Production
+
+```
+npm build
+```
+
+
 
 <br>
 <h2 align="center">📽️ PROJECT PICTURES 📽️</h2>
 <hr>
 <br>
 
-<img src="" />
-<img src="" />
-<img src="" />
-<img src="" />
+<br>
+     <img align="center" src="./frontend/assets/1.jpg" />
+<br>
+<br> 
+<br>
+      <img align="center" src="./frontend/assets/2.jpg" />
+<br>
+<br> 
+<br>
+    <img align="center" src="./frontend/assets/3.jpg" />
+<br>
+<br> 
