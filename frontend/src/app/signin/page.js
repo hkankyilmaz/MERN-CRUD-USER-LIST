@@ -87,7 +87,13 @@ export default function SignIn() {
         toast.error("Opps, There is a Error...");
       } else {
         toast.success("Succesfully Login...");
-        router.push("/");
+        setTimeout(() => {
+          toast.success("You are being redirected home page...");
+        }, 1250);
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+     
       }
     } catch (err) {
       setIsLoading(false);
