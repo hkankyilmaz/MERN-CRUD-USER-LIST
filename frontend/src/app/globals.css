@@ -121,3 +121,6 @@ form .MuiButtonBase-root:hover {
   background-color: #1b80e4 !important ;
   color: white !important;
 }
+.MuiFormControl-root {
+  margin-bottom: 0.5rem !important;
+}
