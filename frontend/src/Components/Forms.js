@@ -68,8 +68,13 @@ export function deleteDialog(props) {
   const { data: session, status, update } = useSession();
   const [deleteUser, { isLoading, isFetching, data }] = useDeleteUserMutation();
 
+  const { deleteLogs } = useLog(null, null, null, {
+    id: props.id,
+    rows: props.rows,
+  });
+
   const handleDelete = () => {
-    deleteUser({ id: props.id })
+    deleteUser({ id: props.id, deleteLogs })
       .unwrap()
       .then((res) => {
         toast.success("Successfuly Deleted");

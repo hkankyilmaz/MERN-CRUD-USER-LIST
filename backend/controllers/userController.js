@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import DeleteLog from "../models/deleteLog.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -163,8 +164,10 @@ const updateUsers = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const id = req.body.id;
+    const deleteLogs = req.body.deleteLogs;
 
-    User.deleteMany({ _id: { $in: id } }).then((result) => {
+    await DeleteLog.create(deleteLogs);
+    await User.deleteMany({ _id: { $in: id } }).then((result) => {
       res.status(200).json({
         succeded: true,
         message: "Succesfully Deleted",

@@ -9,6 +9,9 @@ export const userApiSlice = createApi({
     getUsers: builder.query({
       query: () => `users`,
     }),
+    getSecurityLogs: builder.query({
+      query: () => `logs`,
+    }),
     getUser: builder.mutation({
       query: (user) => ({
         url: "/login",
@@ -50,6 +53,7 @@ export const userApiSlice = createApi({
 export const {
   useDeleteUserMutation,
   useGetUsersQuery,
+  useGetSecurityLogsQuery,
   useGetUserMutation,
   useUserUpdateMutation,
   useUsersUpdateMutation,
