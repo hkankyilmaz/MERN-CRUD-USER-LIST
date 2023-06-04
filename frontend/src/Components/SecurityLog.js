@@ -11,7 +11,7 @@ const SecurityLog = (props) => {
   return (
     <div className="sec-logwrapper">
       <button
-        className="absolute right-7 top-5 bg-red-200 hover:bg-red-300 p-3 rounded-[50%]"
+        className="absolute right-7 top-2 bg-red-300 hover:bg-red-400 p-3 rounded-[50%]"
         onClick={() => {
           props.setOpenModal(false);
         }}
@@ -25,7 +25,7 @@ const SecurityLog = (props) => {
        : isFetching || isLoading ? 
         <p className="font-bold sm:text-lg">Loading...</p>
        : data ? 
-        <div className="ml-5">
+        <div className="mx-5 mt-5">
           {data.logs.map((item, idx) => (
             <p className="font-bold text-gray-500 mb-1">
               {idx + 1}. {item.log} <hr className="text-cyan-600" />
