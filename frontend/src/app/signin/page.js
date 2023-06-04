@@ -149,7 +149,7 @@ export default function SignIn() {
           <p className="description">Scroling down please to Login Form...</p>
           <Image src={mouse} width="200" alt="mouse" />
         </div>
-        {session ? 
+        {session ? (
           <div className="relative">
             <p className="redirect-info">Opps !</p>
             <p className="redirect-info">
@@ -158,16 +158,16 @@ export default function SignIn() {
             <p className="redirect-info">
               You can go to the home page by clicking the button.
             </p>
-
-            <Link
+            <a
               className="absolute bottom-[-50px] left-[50%] translate-x-[-50%] font-bold"
               href="/"
             >
               <buton className="__btn p-4 rounded-md">Go Home Page</buton>
-            </Link>
+            </a>
           </div>
-         : ""
-        }
+        ) : (
+          ""
+        )}
       </section>
       <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
         <section className="bg-[#f0f2f5] panel-2">
