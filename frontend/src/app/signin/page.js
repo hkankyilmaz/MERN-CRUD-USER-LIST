@@ -13,6 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 import { useRouter } from "next/navigation";
 import { Icon } from "../../Components/Forms";
@@ -28,7 +29,7 @@ import ErrMessage from "../../Components/ErrMessage";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-import { signIn} from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { toast } from "react-toastify";
 
@@ -58,7 +59,7 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
   const ref = React.useRef();
-
+  const { data: session } = useSession();
   const {
     register,
     handleSubmit,
@@ -93,7 +94,6 @@ export default function SignIn() {
         setTimeout(() => {
           router.push("/");
         }, 3000);
-     
       }
     } catch (err) {
       setIsLoading(false);
@@ -137,7 +137,7 @@ export default function SignIn() {
   return (
     <main ref={ref}>
       <section className="w-[100vw] h-[100vh] z-50">
-        <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-24">
+        <div className="flex flex-col items-center gap-6 text-center px-4 py-12 lg:py-20">
           <h1 className="panel-one-title">
             <span className="panel-one-title-span  ">
               Malwation Recruiment Case
@@ -149,6 +149,25 @@ export default function SignIn() {
           <p className="description">Scroling down please to Login Form...</p>
           <Image src={mouse} width="200" alt="mouse" />
         </div>
+        {session ? 
+          <div className="relative">
+            <p className="redirect-info">Opps !</p>
+            <p className="redirect-info">
+              It seems that automatic redirection failed.
+            </p>
+            <p className="redirect-info">
+              You can go to the home page by clicking the button.
+            </p>
+
+            <Link
+              className="absolute bottom-[-50px] left-[50%] translate-x-[-50%] font-bold"
+              href="/"
+            >
+              <buton className="__btn p-4 rounded-md">Go Home Page</buton>
+            </Link>
+          </div>
+         : ""
+        }
       </section>
       <section className="relative w-[100vw] h-[100vh] overflow-hidden container__">
         <section className="bg-[#f0f2f5] panel-2">
