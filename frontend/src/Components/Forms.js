@@ -226,39 +226,52 @@ export function updateDialog(props) {
   } = useForm();
 
   const values = watch(); // watching all forms to register to changes to log.
-  const { isChange, log } = useLog(props.row[0], values);
+  const { log } = useLog(props.row[0], values);
+
+  const isChange =
+    values.email !== props.row[0].email ||
+    values.role !== props.row[0].role ||
+    values.firstname !== props.row[0].firstname ||
+    +values.phone !== props.row[0].phone ||
+    values.status !== props.row[0].status ||
+    values.lastname !== props.row[0].lastname ||
+    values.gender !== props.row[0].gender;
 
   const onSubmit = async (data) => {
     setNewData(data);
     console.log(log);
-    updateUser({
-      ...data,
-      name: `${data.firstname} ${data.lastname}`,
-      _id: props.row[0]._id,
-      log: log,
-    })
-      .unwrap()
-      .then(async (res) => {
-        toast.success("Successfuly Updated");
-        props.handleClose();
-        props.refetch();
-
-        const newSession = {
-          ...session,
-          user: { ...session?.user, role: data.role, status: data.status },
-        };
-        if (props.row[0].id == session.user.id) await update(newSession);
+    if (isChange) {
+      updateUser({
+        ...data,
+        name: `${data.firstname} ${data.lastname}`,
+        _id: props.row[0]._id,
+        log: log,
       })
-      .catch((err) => {
-        if (err.data.error.code == 11000) {
-          setError("email", {
-            type: "custom",
-            message: "This email have already registered..!",
-          });
-        }
-        toast.error(err.data.message);
-        console.log(err);
-      });
+        .unwrap()
+        .then(async (res) => {
+          toast.success("Successfuly Updated");
+          props.handleClose();
+          props.refetch();
+
+          const newSession = {
+            ...session,
+            user: { ...session?.user, role: data.role, status: data.status },
+          };
+          if (props.row[0].id == session.user.id) await update(newSession);
+        })
+        .catch((err) => {
+          if (err.data.error.code == 11000) {
+            setError("email", {
+              type: "custom",
+              message: "This email have already registered..!",
+            });
+          }
+          toast.error(err.data.message);
+          console.log(err);
+        });
+    } else {
+      toast.error("There is no Edit...!");
+    }
   };
 
   return (
