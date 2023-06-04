@@ -112,3 +112,12 @@ html {
 .MuiPaper-elevation {
   overflow-y: hidden !important;
 }
+
+form .MuiButtonBase-root {
+  background-color: #4899ea !important ;
+  color: white !important;
+}
+form .MuiButtonBase-root:hover {
+  background-color: #1b80e4 !important ;
+  color: white !important;
+}

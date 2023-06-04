@@ -30,6 +30,7 @@ import { useSession } from "next-auth/react";
 import MasterInfo from "../Components/MasterInfo";
 
 import Dialog from "@mui/material/Dialog";
+import { toast } from "react-toastify";
 
 import * as Forms from "../Components/Forms";
 import SecurityLog from "../Components/SecurityLog";
@@ -61,6 +62,51 @@ export default function Home(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleAction = (actionType) => {
+
+    switch (actionType) {
+      case "Active":
+        if (selection.length > 0 ) {
+          setWhichForm("Active");
+          setOpen(true);
+          break;
+        }else {
+          toast.error("Please select User/Users...!") 
+          break;
+        }
+      case "DeActive":
+        if (selection.length > 0 ) {
+          setWhichForm("DeActive");
+          setOpen(true);
+          break;
+        }else {
+          toast.error("Please select User/Users...!")
+          break; 
+        }
+      case "Update":
+        if (selection.length == 1) {
+          setWhichForm("Update");
+          setOpen(true);
+          break;
+        }else {
+          toast.error("Please select 1 (one) User...!")
+          break;
+        }
+      case "Delete":
+        if (selection.length > 0 ){
+          setWhichForm("Delete");
+          setOpen(true);
+          break; 
+        }else {
+          toast.error("Please select User/Users...!")
+          break; 
+        }
+      default:
+        break;
+    }
+
+  }
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -130,41 +176,25 @@ export default function Home(props) {
               <>
                 <button
                   className="btn bg-green-500/75 hover:bg-green-500"
-                  disabled={selection.length < 1 ? true : false}
-                  onClick={() => {
-                    setWhichForm("Active");
-                    setOpen(true);
-                  }}
+                  onClick={()=> {handleAction("Active")}}
                 >
                   <CheckIcon className="text-white" />
                 </button>
                 <button
                   className="btn bg-orange-400/75 hover:bg-orange-400"
-                  disabled={selection.length < 1 ? true : false}
-                  onClick={() => {
-                    setWhichForm("DeActive");
-                    setOpen(true);
-                  }}
+                  onClick={()=> {handleAction("DeActive")}}
                 >
                   <ClearIcon className="text-white" />
                 </button>
                 <button
                   className="btn bg-blue-600/75 hover:bg-blue-600"
-                  disabled={selection.length !== 1 ? true : false}
-                  onClick={() => {
-                    setWhichForm("Update");
-                    setOpen(true);
-                  }}
+                  onClick={()=> {handleAction("Update")}}
                 >
                   <EditIcon className="text-white" />
                 </button>
                 <button
                   className="btn bg-red-700/75 hover:bg-red-700"
-                  disabled={selection.length < 1 ? true : false}
-                  onClick={() => {
-                    setWhichForm("Delete");
-                    setOpen(true);
-                  }}
+                  onClick={()=> {handleAction("Delete")}}
                 >
                   <DeleteForeverIcon className="text-white" />
                 </button>
