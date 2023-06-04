@@ -1,17 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useImperativeHandle, forwardRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useGetSecurityLogsQuery } from "../app/store/features/userApiSlice";
 
-function SecurityLog({ setOpenModal }) {
-  const { isFetching, isLoading, isError, data } =
+const SecurityLog = (props) => {
+  const { isFetching, isLoading, isError, data, refetch } =
     useGetSecurityLogsQuery();
 
   return (
-    <div className="sec-logwrapper ">
+    <div className="sec-logwrapper">
       <button
-        className="absolute right-7 top-5 bg-red-200 p-3 rounded-[50%]"
+        className="absolute right-7 top-5 bg-red-200 hover:bg-red-300 p-3 rounded-[50%]"
         onClick={() => {
-          setOpenModal(false);
+          props.setOpenModal(false);
         }}
       >
         <CloseIcon sx={{ color: "white" }} />
@@ -19,9 +21,9 @@ function SecurityLog({ setOpenModal }) {
       <h2 className="sec-title">Security Log</h2>
 
       {isError ? 
-        <p>Opps, there is a problem....</p>
+        <p className="font-bold sm:text-lg">Opps, there is a problem....</p>
        : isFetching || isLoading ? 
-        <p>Loading...</p>
+        <p className="font-bold sm:text-lg">Loading...</p>
        : data ? 
         <div className="ml-5">
           {data.logs.map((item, idx) => (
@@ -33,8 +35,13 @@ function SecurityLog({ setOpenModal }) {
        : 
         ""
       }
+      <button
+        className="refetch-btn"
+        onClick={() => {refetch();}}>      
+        re-Fetc Log List
+      </button>
     </div>
   );
-}
+};
 
 export default SecurityLog;

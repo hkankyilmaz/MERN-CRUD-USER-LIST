@@ -2,7 +2,7 @@ import DeleteLog from "../models/deleteLog.js";
 
 const getAllSecLogs = async (req, res) => {
   try {
-    const logs = await DeleteLog.find({});
+    const logs = await DeleteLog.find({}).sort({createdAt: 'desc'});
     res.status(200).json({
       succeded: true,
       logs,

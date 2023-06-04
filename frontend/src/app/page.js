@@ -43,8 +43,6 @@ import CustomToolbar from "../Components/customToolbar";
 
 const drawerWidth = 240;
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home(props) {
   const [selection, setselection] = useState([]);
   const [open, setOpen] = useState(false);
@@ -55,7 +53,7 @@ export default function Home(props) {
   const currentUser = useSelector((state) => state.user);
   const { data: session, update } = useSession();
   const { window } = props;
-  const { isFetching, isLoading, refetch, data } = useGetUsersQuery();
+  const { isFetching, isLoading,isError, isSuccess, refetch, data } = useGetUsersQuery();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -82,14 +80,14 @@ export default function Home(props) {
               <MenuIcon />
             </IconButton>
             <Typography
-              className="hidden sm:block text-transparent bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold"
+              className="title-users"
               variant="h6"
               noWrap
               component="div"
             >
               Users
             </Typography>
-            <div className="text-transparent bg-clip-text bg-gradient-to-r from-black to-cyan-700 font-bold absolute flex right-3">
+            <div className="title-user">
               <span className="capitalize flex mr-5">
                 {session ? `Welcome, ${session.user.name.split(" ")[0]} !` : ""}
               </span>
@@ -127,8 +125,8 @@ export default function Home(props) {
         </Box>
         <Box className="h-full" component="main" sx={MuiStyles.main_}>
           <Toolbar />
-          <div className="mt-2 mb-3  flex justify-start sm:justify-end">
-            {!isLoading ? 
+          <div className="mt-2 mb-3 flex justify-start sm:justify-end">
+            {data ? 
               <>
                 <button
                   className="btn bg-green-500/75 hover:bg-green-500"
@@ -171,11 +169,14 @@ export default function Home(props) {
                   <DeleteForeverIcon className="text-white" />
                 </button>
               </>
-             : 
-              ""
+             : isError 
+             ? <h1 className="font-bold mt-[30vh] sm:text-lg text-center w-full">Opps! There is a Error Please Try Again or Reflesh the Page..!</h1>
+             : isLoading
+             ? ""
+             : ""
             }
           </div>
-          {!isLoading ? (
+          {isSuccess ? 
             <DataGridPremium
               className="h-full"
               getDetailPanelContent={({ row }) => <MasterInfo row={row} />}
@@ -197,9 +198,8 @@ export default function Home(props) {
               }
               selectionModel={selection}
             />
-          ) : (
-            ""
-          )}
+            : "" 
+          }
         </Box>
       </Box>
       <Dialog open={open} onClose={handleClose}>
