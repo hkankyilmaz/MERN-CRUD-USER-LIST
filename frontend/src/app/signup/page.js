@@ -138,7 +138,7 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  className="!mb-2"
+                  className="mb-2"
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -162,7 +162,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  className="!mb-2"
+                  className="mb-2"
                   required
                   fullWidth
                   id="lastName"
@@ -185,7 +185,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  className="!mb-2"
+                  className="mb-2"
                   required
                   fullWidth
                   id="email"
@@ -208,7 +208,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  className="!mb-2"
+                  className="mb-2"
                   required
                   fullWidth
                   name="password"

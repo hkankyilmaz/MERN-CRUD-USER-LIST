@@ -289,7 +289,7 @@ export function updateDialog(props) {
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      className="!mb-2"
+                      className="mb-2"
                       autoComplete="given-name"
                       name="firstName"
                       defaultValue={
@@ -314,7 +314,7 @@ export function updateDialog(props) {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      className="!mb-2"
+                      className="mb-2"
                       defaultValue={
                         props.row[0].lastname ? props.row[0].lastname : ""
                       }
@@ -365,7 +365,7 @@ export function updateDialog(props) {
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
-                      className="!mb-2"
+                      className="mb-2"
                       defaultValue={
                         props.row[0].phone ? props.row[0].phone : ""
                       }
@@ -389,7 +389,7 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormControl className="!mb-2" sx={{ width: "100%" }}>
+                    <FormControl className="mb-2" sx={{ width: "100%" }}>
                       <InputLabel id="demo-simple-select-helper-label">
                         Gender
                       </InputLabel>
@@ -416,7 +416,7 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormControl className="!mb-2" sx={{ width: "100%" }}>
+                    <FormControl className="mb-2" sx={{ width: "100%" }}>
                       <InputLabel id="demo-simple-select-helper-label">
                         Role
                       </InputLabel>
@@ -443,7 +443,7 @@ export function updateDialog(props) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormControl className="!mb-2 w-full" sx={{ width: "100%" }}>
+                    <FormControl className="mb-2 w-full" sx={{ width: "100%" }}>
                       <InputLabel id="status">Statu</InputLabel>
                       <Select
                         defaultValue={
