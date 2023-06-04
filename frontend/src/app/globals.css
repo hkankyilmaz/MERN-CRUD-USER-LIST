@@ -109,3 +109,6 @@ html {
   background-color: #1b80e4 !important ;
   color: white !important;
 }
+.MuiPaper-elevation {
+  overflow-y: hidden !important;
+}
