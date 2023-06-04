@@ -204,3 +204,15 @@ npm build
     <img align="center" src="./frontend/assets/3.jpg" />
 <br>
 <br> 
+<br>
+     <img align="center" src="./frontend/assets/4.jpg" />
+<br>
+<br> 
+<br>
+      <img align="center" src="./frontend/assets/5.jpg" />
+<br>
+<br> 
+<br>
+    <img align="center" src="./frontend/assets/6.jpg" />
+<br>
+<br> 
