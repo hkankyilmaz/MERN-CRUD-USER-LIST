@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
   // get cookie token
-  const hasToken = req.cookies.get("__Secure-next-auth.session-token");
+  const hasToken = req.cookies.get("next-auth.session-token");
 
   // login & register routes
   if (["/signin", "/signup"].includes(req.nextUrl.pathname)) {

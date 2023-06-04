@@ -10,7 +10,7 @@ export default function ErrMessage({ message }) {
           fontSize: "17px",
         }}
       />
-      {message}
+     <span className="translate-y-[0.10rem]">{message}</span> 
     </p>
   );
 }
