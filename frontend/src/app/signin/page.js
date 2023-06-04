@@ -13,7 +13,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Link from "next/link";
-import ErrorIcon from "@mui/icons-material/Error";
 
 import { useRouter } from "next/navigation";
 import { Icon } from "../../Components/Forms";
@@ -29,7 +28,7 @@ import ErrMessage from "../../Components/ErrMessage";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-import { useSession, signIn, getSession } from "next-auth/react";
+import { signIn} from "next-auth/react";
 
 import { toast } from "react-toastify";
 

@@ -209,6 +209,18 @@ npm build
 <br>
 <br> 
 <br>
+     <img align="center" src="./frontend/assets/7.jpg" />
+<br>
+<br> 
+<br>
+     <img align="center" src="./frontend/assets/8.jpg" />
+<br>
+<br> 
+<br>
+      <img align="center" src="./frontend/assets/9.jpg" />
+<br>
+<br> 
+<br>
       <img align="center" src="./frontend/assets/5.jpg" />
 <br>
 <br> 

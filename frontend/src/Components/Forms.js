@@ -136,7 +136,7 @@ export function DeActiveDialog(props) {
   };
   return (
     <>
-      <DialogTitle>Update Statu</DialogTitle>
+      <DialogTitle>Edit Statu</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Selected User/Users will be Inactive. Are you Sure ?
@@ -186,7 +186,7 @@ export function ActiveDialog(props) {
   };
   return (
     <>
-      <DialogTitle>Update Statu</DialogTitle>
+      <DialogTitle>Edit Statu</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Selected User/Users will be Active. Are you Sure ?
@@ -263,10 +263,10 @@ export function updateDialog(props) {
 
   return (
     <>
-      <DialogTitle>Update User</DialogTitle>
+      <DialogTitle>Edit User</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Please Fill in the blanks that you want to the update..!
+          Please Fill in the blanks that you want to the edit..!
         </DialogContentText>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
@@ -483,7 +483,7 @@ export function updateDialog(props) {
                     Cancel
                   </Button>
                   <Button className="_btn" type="submit">
-                    {isLoading | isFetching ? <Icon /> : "Update"}
+                    {isLoading | isFetching ? <Icon /> : "Edit"}
                   </Button>
                 </DialogActions>
               </Box>
