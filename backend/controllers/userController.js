@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({}).sort({ createdAt: "desc" });
     res.status(200).json({
       succeded: true,
       users,

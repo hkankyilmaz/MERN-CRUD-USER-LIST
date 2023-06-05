@@ -135,4 +135,11 @@ form .MuiButtonBase-root:hover {
   .speed-wrapper {
     transform: translateY(-250px) !important;
   }
+
+  .MuiDialogContent-root form {
+    width: 80% !important;
+  }
+  .MuiDialogContent-root main {
+    transform: translateX(-40px) !important;
+  }
 }
