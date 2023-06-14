@@ -12,7 +12,7 @@
 <hr>
 <br>
 
-- This project is a hiring intership program prepared by [Malwation](https://malwation.com/) on application development.
+- This project is a hiring program prepared by [Malwation](https://malwation.com/) on application development.
 - Case is wep application about users list that have different functionality.
 - There are two case for this program that frontend web development and backend web development.
 - My case includes two options.So My app is Full-Stack web development [ MERN Stack (Next.js) ].
